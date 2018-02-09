@@ -83,7 +83,7 @@ After repeating the process and increassing offsets in `LIMIT {offset},1` and `s
 Now we just need to fetch admin's password and we can do so by executing the following query `.. AND Ascii(substring((SELECT password FROM user WHERE username='admin' LIMIT 0,1),{word_offset},1))>{comparing_char}` which gives us a *MD5 hash* `0c2c99a4ad05d39177c30b30531b119b`. And after cracking it we get the real password: `grapevine`.
 
 ### Flag
-After login into admin's account, we are given the flag: `ctflearn{obj3ct_inj3ct1on}` which name is very confusing, because it wasn't an object injection at all, just some simple object modification!
+After login into admin's account, we are given the flag: `ctflearn{obj3ct_inj3ct1on}` whose name is very confusing, because it wasn't an object injection at all, just some simple object modification!
 
 ### Python exploit
 A bit complicated, but friendly to use, exploit created to solve the task
