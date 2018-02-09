@@ -85,7 +85,7 @@ Now we just need to fetch admin's password and we can do so by executing the fol
 ### Flag
 After logging in into admin's account, we are given the flag: `ctflearn{obj3ct_inj3ct1on}` whose name is very confusing, because it wasn't an object injection at all, just some simple object modification!
 
-### Python exploit
+### Python3 exploit
 A bit complicated, but friendly to use, exploit created to solve the task
 ```python
 import requests
