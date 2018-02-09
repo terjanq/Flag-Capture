@@ -43,9 +43,9 @@ And voila, all of the points have vanished!
 
 In the mean time I had also tried some more advanced object manipulation. For example giving a wrong formatted serialized data results with the following error: 
 > <br />
-<b>Notice</b>:  unserialize(): Error at offset 62 of 70 bytes in <b>/usr/share/nginx/html/web/grid/controller.php</b> on line <b>65</b><br />
-<br />
-<b>Fatal error</b>:  Call to a member function delete() on a non-object in <b>/usr/share/nginx/html/web/grid/controller.php</b> on line <b>66</b><br />
+> <b>Notice</b>:  unserialize(): Error at offset 62 of 70 bytes in <b>/usr/share/nginx/html/web/grid/controller.php</b>on line <b>65</b><br />
+> <br />
+> <b>Fatal error</b>:  Call to a member function delete() on a non-object in <b>/usr/share/nginx/html/web/grid/controller.php</b> on line <b>66</b><br />
 
 We read that `delete()` function is invoked on `point` object so maybe we could do some **PHP Object Injection**?
 After quick listing classes containing `::delete()` method we get the following:
