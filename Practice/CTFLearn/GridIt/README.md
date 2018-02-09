@@ -5,9 +5,9 @@
 > http://web.ctflearn.com/grid
 
 ### Login page
-After visiting the given URL we see a simple register/login panel. After some trying, we can easily discard any idea of **SQL/null-byte Injection**, because username/password can contain any character (even null-byte!). 
+After visiting the given URL we see a simple register/login panel. After some trying, we can easily give up any idea of **SQL/null-byte Injection**, because username/password can contain any character (even null-byte!). 
 
-### Grid
+### Grid It
 After successful login, we see a 2d  plane where we can either *add* or *remove* points. This is the only functionality of the site, so it is most likely our target to explore. We notice that any request goes through `controller.php?action=` where `action=` can be followed by either `login`, `register`, `logout`, `add_point`, `delete_point` or hidden `debug`. 
 
 ![GRID grid](grid.png)
