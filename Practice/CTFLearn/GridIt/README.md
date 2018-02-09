@@ -63,7 +63,7 @@ Phar->delete
 PharData->delete
 ```
 
-Comes out that these classes (*Phar* and *PharData*) seem pretty useless in this task, especially that they cannot be even serialized! Looking at the receiving header: `X-Powered-By: PHP/5.5.9-1ubuntu4.22` we notice that the version of PHP is `PHP/5.5.9` which has a lot of [vulnerabilities]. Some of them are about *deserialization*, but let's return to the **SQL Injection**. 
+Comes out that these classes (*Phar* and *PharData*) seem pretty useless in this task, especially that they cannot be even serialized! Looking at the receiving header: `X-Powered-By: PHP/5.5.9-1ubuntu4.22` we notice that the version of PHP is `PHP/5.5.9` which has a lot of [vulnerabilities]. Some are about *deserialization*, but let's return to the **SQL Injection**. 
 
 ### Blind SQL Injection
 We suspect that the *SQL query* looks something like `DELETE FROM ... WHERE ID={} ...`, but we don't get any output from executing the query, so we have to do a **Blind SQL Injection**. 
