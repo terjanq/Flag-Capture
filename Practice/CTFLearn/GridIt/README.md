@@ -16,7 +16,7 @@ After successful login, we see a 2d  plane where we can either *add* or *remove*
 ### Adding points
 Adding points is as simple as sending the request: `POST /controller.php?action=add_point data="x={x}&y={y}"`. 
 
-The page is refusing to add a point which contains any non-digit character so at the moment we avoid any injection in here.
+The page is refusing to add a point which contains any non-digit character so at this stage we skip it.
 ```sh
 $ curl --cookie @sessid 'http://web.ctflearn.com/grid/controller.php?action=add_point' --data 'x=a' 
 Must pass in both parameters.
