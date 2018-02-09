@@ -41,7 +41,7 @@ $ curl --cookie @sessid  'http://web.ctflearn.com/grid/controller.php?action=del
 
 And voila, all of the points have vanished! 
 
-In the mean time I had also tried some more advanced object manipulation. For example giving a wrong formatted serialized data results with the following error: 
+In the mean time I had also tried more advanced object manipulation. For example, giving a wrong formatted serialized data results with the following error: 
 > <br />
 > <b>Notice</b>:  unserialize(): Error at offset 62 of 70 bytes in <b>/usr/share/nginx/html/web/grid/controller.php</b>on line <b>65</b><br />
 > <br />
