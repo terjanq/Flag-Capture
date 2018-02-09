@@ -8,7 +8,7 @@
 After visiting the given URL we see a simple register/login panel. After some trying, we can easily give up any idea of **SQL/null-byte Injection**, because username/password can contain any character (even null-byte!). 
 
 ### Grid It
-After successful login, we see a 2d  plane where we can either *add* or *remove* points. This is the only functionality of the site, so it is most likely our target to explore. We notice that any request goes through `controller.php?action=` where `action=` can be followed by either `login`, `register`, `logout`, `add_point`, `delete_point` or hidden `debug`. 
+After successful logging, we see a 2d  plane where we can either *add* or *remove* points. This is the only functionality of the site, so it is most likely our target to explore. We notice that any request goes through `controller.php?action=` where `action=` can be followed by either `login`, `register`, `logout`, `add_point`, `delete_point` or hidden `debug`. 
 
 ![GRID grid](grid.png)
 
@@ -83,7 +83,7 @@ After repeating the process and increassing offsets in `LIMIT {offset},1` and `s
 Now we just need to fetch admin's password and we can do so by executing the following query `.. AND Ascii(substring((SELECT password FROM user WHERE username='admin' LIMIT 0,1),{word_offset},1))>{comparing_char}` which gives us a *MD5 hash* `0c2c99a4ad05d39177c30b30531b119b`. And after cracking it we get the real password: `grapevine`.
 
 ### Flag
-After login into admin's account, we are given the flag: `ctflearn{obj3ct_inj3ct1on}` whose name is very confusing, because it wasn't an object injection at all, just some simple object modification!
+After logging in into admin's account, we are given the flag: `ctflearn{obj3ct_inj3ct1on}` whose name is very confusing, because it wasn't an object injection at all, just some simple object modification!
 
 ### Python exploit
 A bit complicated, but friendly to use, exploit created to solve the task
