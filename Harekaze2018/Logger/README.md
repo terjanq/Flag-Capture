@@ -181,6 +181,8 @@ After decent analyze of the function I came to the following conclusions:
 
 These observations pushed me to the solution of reversing this function by brute-forcing all the possible seeds and all the possible transformations. 
 
+Reversing `return encoded_arr.reverse().map( x => key[x] ).join("")` is quite easy, since it just replaces each character of reversed `encoded_arr` with corresponding character in dictionay `key[]`. Reversing code is just `encoded_arr.split("").map( x => key.indexOf(x) ).reverse()`
+
 To fetch the last character of the word we have to solve the equation: 
 ```
 c = seed
@@ -212,9 +214,9 @@ function helper(i, c, encoded_arr, c0){
         }
     }
 }
-function decode(encoded_arr,key){
+function decode(encoded_arr, key){
     encoded_arr = encoded_arr.split("");
-    encoded_arr= encoded_arr.map( x => key.indexOf(x) ).reverse();
+    encoded_arr = encoded_arr.map( x => key.indexOf(x) ).reverse();
 
     for(var c = 0; c < 256; c++){
         helper(0, c, r, c)
