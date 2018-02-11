@@ -49,7 +49,7 @@ function(e, t) {
 }.call(t, n(72), n(70))
 ```
 
-It can be seen, that in order to calculate the `hash` I need to know: `password`, `nonce` and `cnonce`, but from these three only last two are known. By looking at the `function i()` I assume that the function creates a valid, not vulnerable `SHA256` hash. 
+It can be seen, that in order to calculate the `hash` I need to know: `password`, `nonce` and `cnonce`, but from these three only last two are known. By looking at the `function i()` I assume that the function creates a valid, not vulnerable `SHA256` hash.  
 As the result of this assumption, I have remembered about `WebSocket protocol` I noticed before and quickly searched for `WebSocket` word in the source code.
 
 
