@@ -151,7 +151,7 @@ I dumped those packets into [sockets.txt]
 
 ### Decoding
 
-In order to solve the task, we would like to decode at least the last character of the message. As mentioned already, we don't need to reverse anything except function `encode(msg, key)`. Let's have a closer look at it with replacing some unused parts.
+In order to solve the task, we would like to decode at least the last character of the message. As mentioned already, we don't need to reverse anything except function `encode(msg, key)`. Let's have a closer look at it with removing some unused parts.
 
 ```js
 function encode(msg, key) {
