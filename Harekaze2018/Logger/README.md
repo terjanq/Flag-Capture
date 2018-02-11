@@ -128,7 +128,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
 ```
 
-We can see that communication *client-server* is encoded `ws.send(encode(message, key))`, using two keys `key` and `key2`. Initially, our key is equal to `MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp` and then after some _shuffling_ it transforms to `key2`. Also, the first message sent by `sockets` is just client's `User-Agent`, which is also used to transform the `key`. 
+We can see that communication *client-server* is encoded (`ws.send(encode(message, key))`) using two keys `key` and `key2`. Initially, our key is equal to `MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp` and then after some _shuffling_ it transforms to `key2`. Also, the first message sent by `sockets` is just client's `User-Agent`, which is also used to transform the `key`. 
 
 `User-Agent` is not a secret, because we can easily fetch it from `HTTP headers`.
 
@@ -142,7 +142,7 @@ By looking at functions `hash`, `rand` and `shuffle` we see that there is no any
 
 The attacker triggered the listener on every input on the site, and he is sending each input key to his server as an encoded message in the form of `ws.send("{random} {input_key}", key2)`. 
 
-By looking at the `WebSockets` I noticed that there are packets of length ~219, ~63, ~85. First ones are encoded `User-Agent messages`, second - `pings` and the last ones, are the ones I need - `user input`.
+By looking at the `WebSockets` I noticed that there are packets of length ~219, ~63, ~85. First ones are encoded `User-Agent messages`, second - `pings` and the last ones are the ones I need - `user input`.
 
 ![websocket]
 
