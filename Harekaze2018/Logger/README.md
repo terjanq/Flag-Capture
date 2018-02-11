@@ -212,7 +212,10 @@ function helper(i, c, encoded_arr, c0){
         }
     }
 }
-function decode(){
+function decode(encoded_arr,){
+	encoded_arr = encoded_arr.split("");
+    encoded_arr= encoded_arr.map( x => key.indexOf(x) ).reverse();
+
     for(var c = 0; c < 256; c++){
         helper(0, c, r, c)
     }
@@ -274,9 +277,9 @@ Array.prototype.back = function(){
     return this[this.length - 1]; 
 };
 
-function decode(r, t){
-    r = r.split("");
-    r = r.map( x => t.indexOf(x) ).reverse();
+function decode(encoded_arr, key){
+    encoded_arr = encoded_arr.split("");
+    encoded_arr= encoded_arr.map( x => key.indexOf(x) ).reverse();
 
     var result = "";
     var callback = (x) => result += x;
@@ -284,7 +287,7 @@ function decode(r, t){
     while(r.length){
         for(var c = 0; c < 256; c++)
             helper(0, c, r, c, callback);
-        while( r.length && !r.back() ) r.pop();
+        while( encoded_arr.length && !encoded_arr.back() ) encoded_arr.pop();
     }
 
     return result.split("").reverse().join("");
