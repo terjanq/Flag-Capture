@@ -212,7 +212,7 @@ function helper(i, c, encoded_arr, c0){
         }
     }
 }
-function decode(encoded_arr,){
+function decode(encoded_arr,key){
 	encoded_arr = encoded_arr.split("");
     encoded_arr= encoded_arr.map( x => key.indexOf(x) ).reverse();
 
