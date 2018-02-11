@@ -231,7 +231,7 @@ console.log(result);
 The only issue of this solution was, that not every character is of length 1 (e.x `Shift`), and the recieved text contained unwanted `t` characters: `irizaki_tmeibuteute_tdamashiilaeHtarekazeCTF{t7r1663r_th4ppy_t61rl}t `.
 It wasn't too hard to remove them though and the final flag was: `HarekazeCTF{7r1663r_h4ppy_61rl} `
 
-However this is the simplest solution I can think of, and after the competitions have finished I'd improved the code of [decoder.js] and decoded the whole strings, which are as follows :)
+However this is the simplest solution I can think of, and after the competition ended I've improved the code of [decoder.js] and decoded the whole strings, which are as follows :)
 
 ![decoded]
 
