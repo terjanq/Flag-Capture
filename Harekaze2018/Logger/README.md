@@ -134,7 +134,7 @@ We can see that communication *client-server* is encoded `ws.send(encode(message
 
 > User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
 
-To confirm encode functions returns the same encoded message which I decoded from `Wireshark` I evaluated `encode` function with `User-Agent` as the message and `MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp` as the key. As expected, the trial has succeeded.
+To confirm encode function returns the same encoded message as decoded from `Wireshark` I evaluated `encode` function with `User-Agent` as the message and `MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp` as the key. As expected, the trial has succeeded.
 
 > WebSocket: T4N8jgYZ5ChvnMJyKyAPCvwAcAmjAhVLt12DeE6SXJQxKsXyv3HL2xKXgASRLHpkDDYRxYQVJt1rNGH6KxyWkkK2gQep84LG33j5N1fzFaxDeXmKfcargKYanYq66KKs9U2XTWEerSwBMCPbsj7faMHQzSkNH
 
