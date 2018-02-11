@@ -47,11 +47,12 @@ window.addEventListener("DOMContentLoaded", function() {
 
   var ws = new WebSocket("ws://192.168.99.101:7467");
   var key = "MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp";
+  var key2 = key;
 
   ws.addEventListener("open", function(event) {
     var message = navigator.userAgent;
     ws.send(encode(message, key));
-    key2 = key2.split("");
+    key2 = key.split("");
     shuffle(key2, rand(hash(message)));
     key2 = key2.join("");
   });
