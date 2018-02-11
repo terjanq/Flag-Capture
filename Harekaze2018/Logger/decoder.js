@@ -48,9 +48,9 @@ function decode(encoded_arr, key){
     var result = "";
     var callback = (x) => result += x;
 
-    while(r.length){
+    while(encoded_arr.length){
         for(var c = 0; c < 256; c++)
-            helper(0, c, r, c, callback);
+            helper(0, c, encoded_arr, c, callback);
         while( encoded_arr.length && !encoded_arr.back() ) encoded_arr.pop();
     }
 
