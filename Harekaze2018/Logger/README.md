@@ -18,7 +18,7 @@ First thing I was searching for in the given logs, were `HTTP` packets. I quickl
 
 ![credentials]
 
-We see that there are parameters: `username`, `cnonce` and `hash`, but no `password` given. The existence of `hash` argument indicates that  `javascript code` had to be used. And indeed there is [bundle.js] file provided as the response of the `GET /dist/bundle.js` request.
+We see that there are parameters: `username`, `cnonce` and `hash`, but no `password` given. The existence of `hash` argument indicates that  `javascript code` had to be used. And indeed there is [bundle.js] file provided as a response of the `GET /dist/bundle.js` request.
 
 
 ![packets]
@@ -28,7 +28,7 @@ There is another interesting packet `HTTP/1.1 101 Switching Protocols` which ind
 
 ### Javascript
 
-As mentioned earlier I fetched the [bundle.js] and the first thing I had tried was to search for part of the code where `hash` is calculated.
+As mentioned earlier I fetched the [bundle.js] and the first thing I have tried was to search for part of the code where `hash` is calculated.
 
 ```js
 function(e, t) {
@@ -49,8 +49,7 @@ function(e, t) {
 }.call(t, n(72), n(70))
 ```
 
-It could be seen, that in order to calculate the `hash` I need to know: `password`, `nonce` and `cnonce`, but from these three we only know the last two. Looking at the `function i()` I assume that the function creates a valid, not vulnerable `SHA256` hash. 
-
+It can be seen, that in order to calculate the `hash` I need to know: `password`, `nonce` and `cnonce`, but from these three only last two are known. By looking at the `function i()` I assume that the function creates a valid, not vulnerable `SHA256` hash. 
 As the result of this assumption, I have remembered about `WebSocket protocol` I noticed before and quickly searched for `WebSocket` word in the source code.
 
 
