@@ -140,7 +140,7 @@ To confirm encode functions returns the same encoded message which I decoded fro
 
 By looking at functions `hash`, `rand` and `shuffle` we see that there is no any randomization made or any desire of reversing them. I just use them to generate transformed `key2`. 
 
-The attacker triggered the listener on every input on the site, and he is sending each key input to his server as an encoded message in the form of `ws.send("{random} {input_key}", key2)`. 
+The attacker triggered the listener on every input on the site, and he is sending each input key to his server as an encoded message in the form of `ws.send("{random} {input_key}", key2)`. 
 
 By looking at the `WebSockets` I noticed that there are packets of length ~219, ~63, ~85. First ones are encoded `User-Agent messages`, second - `pings` and the last ones, are the ones I need - `user input`.
 
