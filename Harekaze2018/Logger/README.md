@@ -177,8 +177,8 @@ function encode(msg, key) {
 After decent analyze of the function I came to the following conclusions:
 - each `element` of `encoded_arr` is between [0, 58)
 - `msg` is converted to `Uint8Array` so its value is between [0, 255]
-- `key` is of length 58 and is used only as dictionary in return function
-- each letter of `msg` is used as the seed to transform the `encoded_arr`
+- `key` is of length 58 and is used only as a dictionary in return function
+- each letter of `msg` is used as the transofrmation seed of `encoded_arr`
 
 These observations pushed me to the solution of reversing this function by brute-forcing all the possible seeds and all the possible transformations. 
 
