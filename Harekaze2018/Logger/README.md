@@ -195,7 +195,7 @@ where we only know `encoded_arr[0]`, and the `seed` is the searched character of
 
 ### Solution
 
-It has to be said, that there will be a lot of solutions `(c, prev_encoded_arr[0])`, so we should repeat the process deep enough for succeeding elements of `prev_encoded_arr[]` and our solutions should quickly zip into one-way solution. 
+It has to be said, that there will be a lot of solutions `(c, prev_encoded_arr[0])`, so we should repeat the process deep enough for succeeding elements of `prev_encoded_arr[]` and our solutions will quickly zip into one-way solution. 
 
 
 In my initial solution, I had used a simple recursive function with deep of 10, and it was enough to solve the task.
