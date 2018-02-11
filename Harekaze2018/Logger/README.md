@@ -18,7 +18,7 @@ First thing I was searching for in the given logs, were `HTTP` packets. I quickl
 
 ![credentials]
 
-We see that there are parameters: `username`, `cnonce` and `hash`, and no `password` given. The existence of `hash` parameter indicates that  `javascript code` had to be used. And indeed there is [bundle.js] file provided as the response of the `GET /dist/bundle.js` request.
+We see that there are parameters: `username`, `cnonce` and `hash`, but no `password` given. The existence of `hash` argument indicates that  `javascript code` had to be used. And indeed there is [bundle.js] file provided as the response of the `GET /dist/bundle.js` request.
 
 
 ![packets]
@@ -129,21 +129,21 @@ window.addEventListener("DOMContentLoaded", function() {
 
 ```
 
-We can see that communication *client-server* is encoded (`ws.send(encode(message, key))`) using two keys `key` and `key2`. Initially, our key is equal to `MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp` and then after some _shuffling_ it transforms to `key2`. Also, the first message sent by `sockets` is just client's `User-Agent`, which is also used to transform the `key`. 
+We can see that communication *client-server* is encoded (`ws.send(encode(message, key))`) using two keys `key` and `key2`. Initially, our key is equal to `MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp` and then after some _shuffling_ it transforms to `key2`. Also, the first message sent via `sockets` is just client's `User-Agent` value, which is also used to transform the `key`. 
 
 `User-Agent` is not a secret, because we can easily fetch it from `HTTP headers`.
 
 > User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
 
-To confirm encode function returns the same encoded message as decoded from `Wireshark` I evaluated `encode` function with `User-Agent` as the message and `MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp` as the key. As expected, the trial has succeeded.
+To confirm that encode function returns the same encoded message as unmasked packet from `Wireshark` I evaluated `encode()` function with `User-Agent` value as the message and `MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp` as the key. As expected, the trial has succeeded.
 
 > WebSocket: T4N8jgYZ5ChvnMJyKyAPCvwAcAmjAhVLt12DeE6SXJQxKsXyv3HL2xKXgASRLHpkDDYRxYQVJt1rNGH6KxyWkkK2gQep84LG33j5N1fzFaxDeXmKfcargKYanYq66KKs9U2XTWEerSwBMCPbsj7faMHQzSkNH
 
 By looking at functions `hash`, `rand` and `shuffle` we see that there is no any randomization made or any desire of reversing them. I just use them to generate transformed `key2`. 
 
-The attacker triggered the listener on every input on the site, and he is sending each input key to his server as an encoded message in the form of `ws.send("{random} {input_key}", key2)`. 
+The attacker attached a *keylogger* on every input on the site, which is sending each pressed by user key to external server as an encoded message in form of `ws.send("{random} {input_key}", key2)`. 
 
-By looking at the `WebSockets` I noticed that there are packets of length ~219, ~63, ~85. First ones are encoded `User-Agent messages`, second - `pings` and the last ones are the ones I need - `user input`.
+I searched for `WebSockets` packets in `Wireshark` and I noticed that there are packets of three lengths: *~219*, *~63*, *~85*. First ones are encoded `User-Agent messages`, second - `pings` and the last ones are the ones I need - `user input`.
 
 ![websocket]
 
@@ -182,7 +182,7 @@ After decent analyze of the function I came to the following conclusions:
 
 These observations pushed me to the solution of reversing this function by brute-forcing all the possible seeds and all the possible transformations. 
 
-Reversing `return encoded_arr.reverse().map( x => key[x] ).join("")` is quite easy, since it just replaces each character of reversed `encoded_arr` with corresponding character in dictionay `key[]`. Reversing code is just `encoded_arr.split("").map( x => key.indexOf(x) ).reverse()`
+Reversing `return encoded_arr.reverse().map( x => key[x] ).join("")` is quite easy, since it just replaces each character of reversed `encoded_arr` with corresponding character from dictionay `key[]`. The reversion of the code can be done by  `encoded_arr.split("").map( x => key.indexOf(x) ).reverse()`
 
 To fetch the last character of the word we have to solve the equation: 
 ```
@@ -195,7 +195,7 @@ where we only know `encoded_arr[0]`, and the `seed` is the searched character of
 
 ### Solution
 
-It has to be said, that there will be a lot of solutions for `(c, prev_encoded_arr[0])`, so we should repeat the process deep enough for succeeding elements of `prev_encoded_arr[]` and our solutions should quickly zip into one-way solution. 
+It has to be said, that there will be a lot of solutions `(c, prev_encoded_arr[0])`, so we should repeat the process deep enough for succeeding elements of `prev_encoded_arr[]` and our solutions should quickly zip into one-way solution. 
 
 
 In my initial solution, I had used a simple recursive function with deep of 10, and it was enough to solve the task.
@@ -220,7 +220,7 @@ function decode(encoded_arr, key){
     encoded_arr = encoded_arr.map( x => key.indexOf(x) ).reverse();
 
     for(var c = 0; c < 256; c++){
-        helper(0, c, r, c)
+        helper(0, c, encoded_arr, c)
     }
     return fetched_char;
 }
@@ -229,13 +229,15 @@ for(var packet of packets){
 }
 console.log(result);
  ```
-The only issue of this solution was, that not every character is of length 1 (e.x `Shift`), and the recieved text contained unwanted `t` characters: `irizaki_tmeibuteute_tdamashiilaeHtarekazeCTF{t7r1663r_th4ppy_t61rl}t ` where after deleting them the flag was: `HarekazeCTF{7r1663r_h4ppy_61rl} `
+The only issue of this solution was, that not every character is of length 1 (e.x `Shift`), and the recieved text contained unwanted `t` characters: `irizaki_tmeibuteute_tdamashiilaeHtarekazeCTF{t7r1663r_th4ppy_t61rl}t `.
+It wasn't too hard to remove them though and the final flag was: `HarekazeCTF{7r1663r_h4ppy_61rl} `
 
-However this is the simplest solution I can think of, and after the competitions have finished I have improved the code ([decoder.js]) and decoded the whole strings, which are as follows :)
+However this is the simplest solution I can think of, and after the competitions have finished I'd improved the code of [decoder.js] and decoded the whole strings, which are as follows :)
 
 ![decoded]
 
-The complete improved solution: 
+The complete improved solution included in [decoder.html]
+
 ```js
 function encode(msg, key) {
     var encoded_arr = [];
@@ -369,3 +371,4 @@ window.onload = function(){
 [bundle.js]: <./files/bundle.js>
 [injected.js]: <./injected.js>
 [decoder.js]: <./decoder.js>
+[decoder.html]: <./decoder.html>
