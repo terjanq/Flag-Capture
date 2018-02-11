@@ -14,26 +14,26 @@ In the task we are provided with only one file [logger.pcap] and with the hint: 
 
 
 ### Packets
-First thing I was searching for in the given logs, were `http` packets. I quickly noticed `POST requests` to `/login.php` which showed the login credentials.
+First thing I was searching for in the given logs, were `HTTP` packets. I quickly noticed `POST requests` to `/login.php` which showed the login credentials.
 
 ![credentials]
 
-We see that there are paramets: `username`, `cnonce` and `hash`, and no `password` given. Existence of `hash` parametr indicates that  `javascript code` had to be used. And indeed there is [bundle.js] file provided as the response of the `GET /dist/bundle.js` request.
+We see that there are parameters: `username`, `cnonce` and `hash`, and no `password` given. The existence of `hash` parameter indicates that  `javascript code` had to be used. And indeed there is [bundle.js] file provided as the response of the `GET /dist/bundle.js` request.
 
 
 ![packets]
 
-There is another interesting packet `HTTP/1.1 101 Switching Protocols` which indicates that `Websocket tunnel` has started.
+There is another interesting packet `HTTP/1.1 101 Switching Protocols` which indicates that `WebSocket tunnel` has started.
 
 
 ### Javascript
 
-As mentioned earlier I fetched the [bundle.js] and first thing I had tried was to search for part of the code where `hash` is calculated.
+As mentioned earlier I fetched the [bundle.js] and the first thing I had tried was to search for part of the code where `hash` is calculated.
 
 ```js
 function(e, t) {
     function i(t) { 
-    	return e.createHash("sha256").update(t).digest("hex");
+        return e.createHash("sha256").update(t).digest("hex");
     } 
     var r = n(162);
     n.n(r);
@@ -51,7 +51,7 @@ function(e, t) {
 
 Could be seen, that in order to calculate the `hash` I need to know: `password`, `nonce` and `cnonce`, but from these three we know only last two. Looking at the `function i()` I assume that this function creates a valid, not vulnerable `SHA256` hash. 
 
-As the result of this assumation, I have remembered about `Websocket protocol` I had noticed, and quickly searched for `WebSocket` word in the source code.
+As the result of this assumption, I have remembered about `WebSocket protocol` I had noticed and quickly searched for `WebSocket` word in the source code.
 
 
 ### Websocket
@@ -128,13 +128,13 @@ window.addEventListener("DOMContentLoaded", function() {
 
 ```
 
-We can see that communication *client-server* is encoded `ws.send(encode(message, key))`, using two keys `key` and `key2`. Initialy our key is equal to `MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp` and then after some _shuffling_ it transforms to `key2`. Also first message sent by `sockets` is just client's `User-Agent`, which is also used to transofrm the `key`. 
+We can see that communication *client-server* is encoded `ws.send(encode(message, key))`, using two keys `key` and `key2`. Initially, our key is equal to `MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp` and then after some _shuffling_ it transforms to `key2`. Also, the first message sent by `sockets` is just client's `User-Agent`, which is also used to transform the `key`. 
 
 `User-Agent` is not a secret, because we can easily fetch it from `HTTP headers`.
 
 > User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
 
-To confirm encode functions returns the same encoded message which I decoded from `WireShark` I evalueated `encode` function with `User-Agent` as the message and `MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp` as the key. As expected, the try has succeeded.
+To confirm encode functions returns the same encoded message which I decoded from `Wireshark` I evaluated `encode` function with `User-Agent` as the message and `MeitamANbcfv2yXDH1RjPTzVqnLYFhE54uJUkdwCgGB36srQ8o9ZK7WxSp` as the key. As expected, the trial has succeeded.
 
 > WebSocket: T4N8jgYZ5ChvnMJyKyAPCvwAcAmjAhVLt12DeE6SXJQxKsXyv3HL2xKXgASRLHpkDDYRxYQVJt1rNGH6KxyWkkK2gQep84LG33j5N1fzFaxDeXmKfcargKYanYq66KKs9U2XTWEerSwBMCPbsj7faMHQzSkNH
 
@@ -142,7 +142,7 @@ By looking at functions `hash`, `rand` and `shuffle` we see that there is no any
 
 The attacker triggered the listener on every input on the site, and he is sending each key input to his server as an encoded message in the form of `ws.send("{random} {input_key}", key2)`. 
 
-By looking at the `WebScokets` I noticed that there are packets of length ~219, ~63, ~85. First ones are encoded `User-Agent messages`, second - `pings` and the last ones, are the ones I need - `user input`.
+By looking at the `WebSockets` I noticed that there are packets of length ~219, ~63, ~85. First ones are encoded `User-Agent messages`, second - `pings` and the last ones, are the ones I need - `user input`.
 
 ![websocket]
 
@@ -151,7 +151,7 @@ I dumped those packets into [sockets.txt]
 
 ### Decoding
 
-In order to solve the task we would like to decode at least the last character of the message. As mentioned already, we don't need to reverse anything except function `enocde(msg, key)`. Let's have a closer look at it with replacing some unused parts.
+In order to solve the task, we would like to decode at least the last character of the message. As mentioned already, we don't need to reverse anything except function `encode(msg, key)`. Let's have a closer look at it with replacing some unused parts.
 
 ```js
 function encode(msg, key) {
@@ -173,13 +173,13 @@ function encode(msg, key) {
 }
 ```
 
-After decent analyse of the function I came to following conclusions:
+After decent analyze of the function I came to following conclusions:
 - each `element` of `encoded_arr` is between [0, 58)
 - `msg` is converted to `Uint8Array` so it's value is between [0, 255]
-- `key` is of lenght 58 and is used only as dictionary in return function
-- each letter of `msg` is used as the seed to transoformare the `encoded_arr`
+- `key` is of length 58 and is used only as dictionary in return function
+- each letter of `msg` is used as the seed to transform the `encoded_arr`
 
-These observations pushed me to the solution of reversing this function by bruteforcing all the possible seeds and all the possible transofrmations. 
+These observations pushed me to the solution of reversing this function by brute-forcing all the possible seeds and all the possible transformations. 
 
 To fetch the last character of the word we have to solve the equation: 
 ```
@@ -192,10 +192,10 @@ where we only know `encoded_arr[0]`, and the `seed` is the searched character of
 
 ### Solution
 
-It has to be said, that there will be a lot of solutions for `(c, prev_encoded_arr[0])`, so we should repeat the proces deep enough for succeeding elements of `prev_encoded_arr[]` and our solutions should quickly zip into one-way solution. 
+It has to be said, that there will be a lot of solutions for `(c, prev_encoded_arr[0])`, so we should repeat the process deep enough for succeeding elements of `prev_encoded_arr[]` and our solutions should quickly zip into one-way solution. 
 
 
-In my initial solution I had used simple recursive function with deep of 10, and it was enough to solve the task.
+In my initial solution, I had used a simple recursive function with deep of 10, and it was enough to solve the task.
 
 ```js
 var fetched_char = "", result = "";
@@ -206,26 +206,26 @@ function helper(i, c, encoded_arr, c0){
     }
 
     for(var r0 = 0; r0 < 58; r0++){
-    	c0 += r0*256;
+        c0 += r0*256;
         if(encoded_arr[ i ] == c0 % 58){
             helper(i + 1, c, encoded_arr, Math.floor( c0 / 58 ));
         }
     }
 }
 function decode(){
-	for(var c = 0; c < 256; c++){
-	    helper(0, c, r, c)
-	}
-	return fetched_char;
+    for(var c = 0; c < 256; c++){
+        helper(0, c, r, c)
+    }
+    return fetched_char;
 }
 for(var packet of packets){
-	result = decode(packet, key2) + result;
+    result = decode(packet, key2) + result;
 }
 console.log(result);
  ```
 The only issue of this solution was, that not every character is of length 1 (e.x `Shift`), and the recieved text contained unwanted `t` characters: `irizaki_tmeibuteute_tdamashiilaeHtarekazeCTF{t7r1663r_th4ppy_t61rl}t ` where after deleting them the flag was: `HarekazeCTF{7r1663r_h4ppy_61rl} `
 
-However this is the simplest solution I can think of, and after the competitions has finished I have improved the code ([decoder.js]) and decoded the whole strings, which are as follows :)
+However this is the simplest solution I can think of, and after the competitions have finished I have improved the code ([decoder.js]) and decoded the whole strings, which are as follows :)
 
 ![decoded]
 
@@ -322,7 +322,7 @@ var console_code = document.querySelector('#console');
 var _console = console.log
 console.log = function(...args){
     if( console_code )
-    	console_code.innerHTML += args.join(" ") + "\n";
+        console_code.innerHTML += args.join(" ") + "\n";
     _console(...args); 
 }
 
