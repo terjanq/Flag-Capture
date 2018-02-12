@@ -1,0 +1,13 @@
+$ sudo nano postgresql.conf
+$ sudo /etc/init.d/postgresql reload
+[ ok ] Reloading postgresql configuration (via systemctl): postgresql.service.
+$ psql -U postgres -c "CREATE DATABASE unf"
+CREATE DATABASE
+$ psql -U postgres -d unf < unf.sql >> /dev/null
+$ psql -U postgres -d unf -c "SELECT FLAG()"
+             flag
+-------------------------------
+ HarekazeCTF{****************}
+(1 row)
+
+$
