@@ -1,4 +1,4 @@
-# Recursive zip &ldash; *Write-up by @terjanq*
+# Recursive zip &ndash; *Write-up by @terjanq*
 
 > Description
 >---
