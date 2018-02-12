@@ -8,7 +8,7 @@
 
 ____
 
-There are two files inside the archive [unf.zip](#): [operations.txt] and [unf.sql]. The first one contains instruction how to use the given `SQL` script.
+There are two files inside the archive [unf.zip](#): [operation.txt] and [unf.sql]. The first one contains instruction how to use the given `SQL` script.
 
 Inside [unf.sql] we have two tables `dict` and `rel`. The second one defines the recursive relations between objects, and every object has its corresponding character in `dict`. 
 
@@ -61,7 +61,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 After the part of trying to understand how the given relations work I was planning to rewrite them into some language I know ( Yes, I know nothing about `PostgreSQL` ) I moved to analzying the flag function.  
 Well analyzing is a big word because all I have done was to change some code and watch how function adapts to that change...  
-Running the command from [operations.txt] returns the following output.
+Running the command from [operation.txt] returns the following output.
 
 ```sh
 $ psql -U postgres -d unf -c "SELECT FLAG()"
@@ -112,7 +112,7 @@ We see that for `i=0` the result is: `}HarekazeCTFTh1rteen_0rphans{` which looks
 And the final flag is **HarekazeCTF{Th1rteen_0rphans}**
 
 
-[operations.txt]:<./files/operations.txt>
+[operation.txt]:<./files/operation.txt>
 [unf.sql]:<./files/unf.sql>
 [modified_unf.sql]: <./modified_unf.sql>
 
