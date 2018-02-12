@@ -1,4 +1,4 @@
-# Logger -- *Write-up by @terjanq*
+# Logger &ldash; *Write-up by @terjanq*
 
 > Description
 >---
@@ -138,11 +138,11 @@ To confirm that encode function returns the same encoded message as unmasked pac
 
 > WebSocket: T4N8jgYZ5ChvnMJyKyAPCvwAcAmjAhVLt12DeE6SXJQxKsXyv3HL2xKXgASRLHpkDDYRxYQVJt1rNGH6KxyWkkK2gQep84LG33j5N1fzFaxDeXmKfcargKYanYq66KKs9U2XTWEerSwBMCPbsj7faMHQzSkNH
 
-By looking at functions `hash`, `rand` and `shuffle` we see that there is no any randomization made or any desire of reversing them. I just use them to generate transformed `key2`. 
+By looking at functions `hash`, `rand` and `shuffle` we see that there is no any randomization made or any desire of reversing them. So, I just use them to generate they transformed key `key2`. 
 
 The attacker attached a *keylogger* on every input on the site, which is sending each pressed by user key to external server as an encoded message in form of `ws.send("{random} {input_key}", key2)`. 
 
-I searched for `WebSockets` packets in `Wireshark` and I noticed that there are packets of three lengths: *~219*, *~63*, *~85*. First ones are encoded `User-Agent messages`, second - `pings` and the last ones are the ones I need - `user input`.
+I searched for `WebSockets` packets in `Wireshark` and I noticed that there are packets of three lengths: *~219*, *~60*, *~85*. First ones are encoded `User-Agent messages`, second - `pings` and the last ones are the ones I need - `user input`.
 
 ![websocket]
 
@@ -356,7 +356,7 @@ window.onload = function(){
 
     console.log(`encoding: ${msg}\n\t${kk}\n`);
     console.log("decoded: ", decode(kk, key));
-}
+}f
 ```
 
 

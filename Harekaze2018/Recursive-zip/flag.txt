@@ -1,0 +1,1 @@
+HarekazeCTF{(\lambda f. (\lambda x. f (x x)) (\lambda x . f (x x))) zip}
