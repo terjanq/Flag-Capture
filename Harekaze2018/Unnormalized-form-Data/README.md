@@ -60,7 +60,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 ```
 
 After the part of understanding how the given relations work I was planning to rewrite them into some language I know ( Yes, I know nothing about `PostgreSQL` ). But I moved to analyzing the `flag function` first.   
-Well analyzing is a big word because all I have done was to change some code and watch how function adapts to that change...  
+Well analyzing is a big word because all I have done was to change some code and watch how the function adapts to that change...  
 Running the command from [operation.txt] returns the following output.
 
 ```sh
@@ -73,7 +73,7 @@ $ psql -U postgres -d unf -c "SELECT FLAG()"
 I noticed that when I change the `WHERE i = 40` into some other value, the returned flag started to contain some additional information. I got lucky because this additional information was the searched flag, so I solved this task with my first attempt! :)
 
 
-However, here is a part of the changed code ([modified_unf.sql]) of `unf.sql` allowing us to choose the starting point.
+However, here is a part of the changed code ([unf_modified.sql]) of `unf.sql` allowing us to choose the starting point.
 
 
 ```sql
@@ -114,5 +114,5 @@ And the final flag is **HarekazeCTF{Th1rteen_0rphans}**
 
 [operation.txt]:<./files/operation.txt>
 [unf.sql]:<./files/unf.sql>
-[modified_unf.sql]: <./modified_unf.sql>
+[unf_modified.sql]: <./unf_modified.sql>
 
