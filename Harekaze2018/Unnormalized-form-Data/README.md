@@ -1,4 +1,4 @@
-# Recursive zip &ndash; *Write-up by @terjanq*
+# Unnormalized-form Data &ndash; *Write-up by @terjanq*
 
 > Description
 >---
@@ -59,7 +59,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 ```
 
-After the part of understanding how the given relations work I was planning to rewrite them into some language I know ( Yes, I know nothing about `PostgreSQL` ). But I moved to analzying the `flag function` first.   
+After the part of understanding how the given relations work I was planning to rewrite them into some language I know ( Yes, I know nothing about `PostgreSQL` ). But I moved to analyzing the `flag function` first.   
 Well analyzing is a big word because all I have done was to change some code and watch how function adapts to that change...  
 Running the command from [operation.txt] returns the following output.
 
