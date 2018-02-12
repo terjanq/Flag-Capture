@@ -1,4 +1,4 @@
-# Logger &ldash; *Write-up by @terjanq*
+# Logger &ndash; *Write-up by @terjanq*
 
 > Description
 >---
