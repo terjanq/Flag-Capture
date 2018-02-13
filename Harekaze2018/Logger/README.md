@@ -151,7 +151,7 @@ I dumped those packets into [sockets.txt]
 
 ### Decoding
 
-In order to solve the task, we would like to decode at least the last character of the message. As mentioned already, we don't need to reverse anything except function `encode(msg, key)`. Let's have a closer look at it with removing unused parts.
+In order to solve the task, we would like to decode at least the last character of the message. As mentioned already, we don't need to reverse anything except the function `encode(msg, key)`. Let's have a closer look at it with removing unused parts.
 
 ```js
 function encode(msg, key) {
@@ -181,7 +181,7 @@ After decent analyze of the function I came to the following conclusions:
 
 These observations pushed me to the solution of reversing this function by brute-forcing all the possible seeds and all the possible transformations. 
 
-Reversing `return encoded_arr.reverse().map( x => key[x] ).join("")` is quite easy, since it just replaces each character of reversed `encoded_arr` with corresponding character in dictionay `key[]`. The reversion of the code can be done by  `encoded_arr.split("").map( x => key.indexOf(x) ).reverse()`
+Reversing `return encoded_arr.reverse().map( x => key[x] ).join("")` is quite easy, since it just replaces each character of reversed `encoded_arr` with corresponding character in dictionary `key[]`. The reversion of the code can be done by  `encoded_arr.split("").map( x => key.indexOf(x) ).reverse()`
 
 To fetch the last character of the word we have to solve the equation: 
 ```
@@ -228,8 +228,8 @@ for(var packet of packets){
 }
 console.log(result);
  ```
-The only issue of this solution was, that not every character is of length 1 (e.x `Shift`), and the recieved text contained unwanted `t` characters: `irizaki_tmeibuteute_tdamashiilaeHtarekazeCTF{t7r1663r_th4ppy_t61rl}t `.
-It wasn't too hard to remove them though and the final flag was: `HarekazeCTF{7r1663r_h4ppy_61rl} `
+The only issue of this solution was, that not every character is of length 1 (e.g. `Shift`), and the recieved text contained unwanted `t` characters: `irizaki_tmeibuteute_tdamashiilaeHtarekazeCTF{t7r1663r_th4ppy_t61rl}t `.
+It wasn't too hard to remove them though and the final flag was: **HarekazeCTF{7r1663r_h4ppy_61rl}**
 
 However this is the simplest solution I can think of, and after the competition ended I've improved the code of [decoder.js] and decoded the whole strings, which are as follows :)
 
