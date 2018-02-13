@@ -17,9 +17,11 @@ function encode(msg, key) {
 }
 
 function helper(i, c, encoded_arr, c0, cb){
-    if(i == encoded_arr.length && c0 == 0) {
-        this.solved = true;
-        cb(String.fromCharCode( c ));
+    if(i == encoded_arr.length) {
+        if(c0 == 0){
+            this.solved = true;
+            cb(String.fromCharCode( c ));
+        }
         return;
     }
     if(i == 0) this.solved = false;
