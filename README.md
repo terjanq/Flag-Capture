@@ -4,7 +4,7 @@ This repo is created to share the **solutions**, **attempts** and the **results*
 
 I solve problems mostly from `Web` and `Crypto` category, but I am also interested in other topics as well.
 
-I started my journey with such competitions in late **Dec**ember **2017** by joining the academic team: **catfish**. 
+I started my journey with such competitions in late **Dec**ember **2017** by joining the academic team: **c@fish**. 
 
 ### List of my write-ups:
 - [Logger](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Logger#logger--write-up-by-terjanq)
