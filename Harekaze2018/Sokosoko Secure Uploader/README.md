@@ -10,14 +10,14 @@
 > (Web, 100 points)
 
 ## Description
-We are given the URL of the [service](#) where we can decrypt an encrypted image and information about UUID prefix `9e5a` needed to decrypt the image.
+We are given the URL of the [service](#) where we can decrypt an encrypted image and the information about the UUID prefix `9e5a` needed to decrypt the image.
 
 ![site.png]
 
 We are also provided with [src.zip] archive containing a source code of the entire site and with the file [flag.png.encrypted], which as the name suggests is an encrypted image of the searched flag.   
 
 # Solution
-By the quick look at the [decrypt.php], I noticed a possibility of `SQL Injection` inside `UUID POST data`.
+By a quick look at the [decrypt.php], I noticed a possibility of the `SQL Injection` inside `UUID POST data`.
 
 ```php
 $uuid = $_POST['uuid'];
