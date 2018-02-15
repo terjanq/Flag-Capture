@@ -50,6 +50,7 @@ function decode(encoded_arr, key){
     var result = "";
     var callback = (x) => result += x;
 
+    result = "";
     while(encoded_arr.length){
         for(var c = 0; c < 256; c++)
             helper(0, c, encoded_arr, c, callback);
