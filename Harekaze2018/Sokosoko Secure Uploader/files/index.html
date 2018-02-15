@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>🔒 Sokosoko Secure Uploader</title>
+  </head>
+  <body>
+    <main>
+      <h1>🔒 Sokosoko Secure Uploader</h1>
+      <p>Sokosoko Secure Uploader is a file encryption service.</p>
+      <h2>Encryption</h2>
+      <!--form action="encrypt.php" enctype="multipart/form-data" method="post">
+        <label>
+          File: <input type="file" name="file"><br>
+        </label>
+        <input type="submit">
+      </form-->
+      <p>Sorry, this function is disabled.</p>
+      <h2>Decryption</h2>
+      <form action="decrypt.php" enctype="multipart/form-data" method="post">
+        <label>
+          UUID: <input type="text" name="uuid" size="36" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"><br>
+        </label>
+        <label>
+          Encrypted file: <input type="file" name="file"><br>
+        </label>
+        <input type="submit">
+      </form>
+    </main>
+  </body>
+</html>
