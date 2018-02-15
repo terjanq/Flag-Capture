@@ -1,0 +1,3 @@
+<Files ~ "^key.db$">
+  deny from all 
+</Files>
