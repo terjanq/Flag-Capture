@@ -41,8 +41,9 @@ function is_uuid($str) {
 }
 ```
 
-So, we are forced to make an injection in `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` format. We would like to use the information given in task description, so our query should look like `SELECT id LIKE '9e5a%'`. Comes out that we can do it by the following input: `'OR id/*-aaaa-aaaa-aaaa-*/LIKE'9e5a%`.  
-Which after uploading with the [flag.png.encrypted] returns an image with the flag inside.
+So, we are forced to make an injection in `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` format.  
+We would like to use the given information about UUID needed to decrypt the image, so our query should look like `SELECT id LIKE '9e5a%'`.  
+Comes out that we can do it by the following input: `'OR id/*-aaaa-aaaa-aaaa-*/LIKE'9e5a%`, which after uploading in tandem with the [flag.png.encrypted] returns an image with the flag inside.
 
 Flag: **HarekazeCTF{k41k4n_j1kk4n_j1n615uk4n}**
 
