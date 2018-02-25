@@ -1,0 +1,42 @@
+from pwn import *
+import base64
+import os
+
+
+
+
+hashes = open("hashes.txt", "r")
+
+setm = hashes.read().strip();
+setm = setm.split('\n')
+setm = list(map(lambda x: tuple(x.split(',')), setm))
+setm = dict(setm)
+
+p = remote('103.5.112.91', 1340)
+
+
+print p.recvuntil("no human!\n")
+
+hashes = open("hashes.txt", "a");
+
+
+for i in xrange(100):
+    b = p.recvuntil("\n\n")
+    b = b.replace("\n", "")
+
+
+    x = setm.get(b.strip())
+ 
+    
+    print x
+    if x != '0' and x !='1':
+        f = open("image.jpg", "w")
+        f.write(base64.b64decode(b))
+        f.close()
+        os.system("img2txt image.jpg");
+        x = raw_input('so who? ')
+        hashes.write('{},{}'.format(b.replace("\n", ""),x))
+        p.send(x)
+    else:
+        p.sendline(x)
+ 
