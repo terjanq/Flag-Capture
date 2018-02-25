@@ -12,7 +12,7 @@ If we know how the `xor` operation works, the solution is super easy. Here are f
 - The binary representation of `p` must be 1 bit shorter than x.
 - We can put either `0` or `1` for each position in `p` where the corresponding bit in `x` is set to `0`.  
 - In order to ''change'' `1` in `x` to `0` in `p` at corresponding positions we have to set at least one empty bit to `1` at the left.
-- If we ''change'' the bit `0` to `1`, every bit at the left can be either `1` or `0` so the results increases of `2^i`  where `i` is the position of examined bit (from left to right, starting with 0).  
+- If we ''change'' the bit `0` to `1`, every bit at the right can be either `1` or `0` so the results increases of `2^i`  where `i` is the position of examined bit (from left to right, starting with 0).  
 
 So the algorithm is to iterate over each bit of `x`, and if it is `0` we add to result `2^i`. 
 
