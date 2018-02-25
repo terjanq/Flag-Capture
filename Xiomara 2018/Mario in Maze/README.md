@@ -2,7 +2,7 @@
 
 ## Description
 
-In the problem, we were given the `N × M matrix`, filled with some values, i.e. `chocolate tastiness values`. Mario starts from the point `(1, 1)` and goes to the point `(n, m)`, eating each chocolate collected on the path. Our goal is to maximize the tastiness Mario can achieve.  
+In the problem, we were given the `N × M matrix`, filled with some values, i.e. `chocolate tastiness values`. Mario starts from the point `(1, 1)` and goes to the point `(n, m)` moving either in `south` or `east` direction, eating each chocolate collected on the path. Our goal is to maximize the tastiness Mario can achieve.  
 But there is one restriction, Mario must visit each of the given `checkpoints`, i.e. following `J` points.  
 
 All the communication with the server goes through `TCP protocol`, using tools like `nc ip port`.
