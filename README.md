@@ -7,14 +7,17 @@ I solve problems mostly from `Web` and `Crypto` category, but I am also interest
 I started my journey with such competitions in late **Dec**ember **2017** by joining the academic team: **c@fish**. 
 
 ### List of my write-ups:
-- [Logger](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Logger#logger--write-up-by-terjanq)
-- [Sokosoko Secure Uploader](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Sokosoko%20Secure%20Uploader#sokosoko-secure-uploader)
-- [Unnormalized-form Data](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Unnormalized-form-Data#unnormalized-form-data--write-up-by-terjanq)
-- [Obfuscated Password Checker](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Obfuscated%20Password%20Checker#obfuscated-password-checker--write-up-by-terjanq)
-- [Recursive zip](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Recursive-zip#recursive-zip--write-up-by-terjanq)
-- [Grid It!](https://github.com/terjanq/Flag-Capture/tree/master/Practice/CTFLearn/GridIt#grid-it---write-up-by-terjanq)
+- [Mario in maze](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Mario%20in%20Maze#mario-in-maze--write-up-by-terjanq) (Misc, Algorithms)
+- [Mario's dream](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Marioes%20dream#mario-s-dream--write-up-by-terjanq) (Misc, Algorithms)
+- [Logger](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Logger#logger--write-up-by-terjanq) (Net, Rev, Misc, Web)
+- [Sokosoko Secure Uploader](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Sokosoko%20Secure%20Uploader#sokosoko-secure-uploader) (Web)
+- [Unnormalized-form Data](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Unnormalized-form-Data#unnormalized-form-data--write-up-by-terjanq) (Misc,Forensics)
+- [Obfuscated Password Checker](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Obfuscated%20Password%20Checker#obfuscated-password-checker--write-up-by-terjanq) (Web)
+- [Recursive zip](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Recursive-zip#recursive-zip--write-up-by-terjanq) 
+- [Grid It!](https://github.com/terjanq/Flag-Capture/tree/master/Practice/CTFLearn/GridIt#grid-it---write-up-by-terjanq) (Web)
 
 ### List of events I have participated in:
+- [Xiomara 2018](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018#xiomara-2018) (Feb 2018)
 - [Harekaze CTF](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018#harekaze-ctf-2018) (Feb 2018)
 - [EvlzCTF](https://github.com/terjanq/Flag-Capture/tree/master/Evlz%202018#evlzctf-2018) (Feb 2018)
 - [ShariffCTF 8](https://github.com/terjanq/Flag-Capture/tree/master/Shariff%202018#sharifctf-8) (Feb 2018)
