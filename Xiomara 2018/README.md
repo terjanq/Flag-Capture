@@ -38,6 +38,7 @@ We have solved all the problems except: **Flag Locker** *(Web, 200)*, **Mario** 
 - **Dig_Deep** (Forensics, 150)
 
 ### Writeups
+- [Captcha Generator](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Captcha%20Generator#captcha-generator--write-up-by-terjanq) (Misc)
 - [Mario in maze](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Mario%20in%20Maze#mario-in-maze--write-up-by-terjanq) (Misc, Algorithms)
 - [Mario's dream](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Marioes%20dream#marios-dream--write-up-by-terjanq) (Misc, Algorithms)
 

@@ -7,6 +7,7 @@ I solve problems mostly from `Web` and `Crypto` category, but I am also interest
 I started my journey with such competitions in late **Dec**ember **2017** by joining the academic team: **c@fish**. 
 
 ### List of my write-ups:
+- [Captcha Generator](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Captcha%20Generator#captcha-generator--write-up-by-terjanq) (Misc)
 - [Mario in maze](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Mario%20in%20Maze#mario-in-maze--write-up-by-terjanq) (Misc, Algorithms)
 - [Mario's dream](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Marioes%20dream#marios-dream--write-up-by-terjanq) (Misc, Algorithms)
 - [Logger](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Logger#logger--write-up-by-terjanq) (Net, Rev, Misc, Web)
