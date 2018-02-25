@@ -39,7 +39,7 @@ We have solved all the problems except: **Flag Locker** *(Web, 200)*, **Mario** 
 
 ### Writeups
 - [Mario in maze](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Mario%20in%20Maze#mario-in-maze--write-up-by-terjanq) (Misc, Algorithms)
-- [Mario's dream](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Marioes%20dream#mario-s-dream--write-up-by-terjanq) (Misc, Algorithms)
+- [Mario's dream](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Marioes%20dream#marios-dream--write-up-by-terjanq) (Misc, Algorithms)
 
 &nbsp;
 
