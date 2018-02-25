@@ -1,7 +1,7 @@
 # Captcha Generator &ndash; *Write-up by @terjanq*
 
 ## Description
-The challenge was about `human face recognition`. The author's intention was to write a program able to determine if on the image we can either see a human or not-human. For the first case the answer should be `1` and for the second one `0`. The difficulty was that we had to process each given picture in relatively short amount of time, because the connection was dropping after some time. The input format was an image encoded in `base64`.  
+The challenge was about `human face recognition`. The author's intention was to write a program able to determine whether we can see a human on the image or not-human. For the first case the answer should be `1` and for the second one `0`. The difficulty was that we had to process each given picture in relatively short amount of time, because the connection was dropping after some time. The input format was an image encoded in `base64`.  
 
 On the IRC channel, I noticed that people were complaining about those timeouts because their programs were too slow.. In my solution I had no any issue with that :)
 
