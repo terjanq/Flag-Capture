@@ -8,7 +8,7 @@ I started my journey with such competitions in late **Dec**ember **2017** by joi
 
 ### List of my write-ups:
 - [Mario in maze](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Mario%20in%20Maze#mario-in-maze--write-up-by-terjanq) (Misc, Algorithms)
-- [Mario's dream](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Marioes%20dream#mario-s-dream--write-up-by-terjanq) (Misc, Algorithms)
+- [Mario's dream](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Marioes%20dream#marios-dream--write-up-by-terjanq) (Misc, Algorithms)
 - [Logger](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Logger#logger--write-up-by-terjanq) (Net, Rev, Misc, Web)
 - [Sokosoko Secure Uploader](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Sokosoko%20Secure%20Uploader#sokosoko-secure-uploader) (Web)
 - [Unnormalized-form Data](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Unnormalized-form-Data#unnormalized-form-data--write-up-by-terjanq) (Misc,Forensics)
