@@ -16,7 +16,7 @@ Without this restriction, it is a school problem for use of **Dynamic Programmin
 arr[i][j] = max( arr[i-1][j], arr[i][j-1] ) + arr[i][j]
 ```
 
-We can notice, that the the path through checkpoints is unambiguous, i.e. the order of which Mario can visit J checkpoints is uniquely designated. With that observation, we can apply exactly the same algorithm, but when Mario steps on the checkpoint `(I, J)` we crop the `Array` to the new one of size `(N - I + 1) × (M - J + 1)` with new starting point:  `(I, J)`. From now on we repeat the algorithm for each visited checkpoint.    
+We can notice, that the the path through checkpoints is unambiguous, i.e. the order of which Mario can visit `J` checkpoints is uniquely designated. With that observation, we can apply exactly the same algorithm, but when Mario steps on the checkpoint `(I, J)` we crop the `Array` to the new one of size `(N - I + 1) × (M - J + 1)` with new starting point:  `(I, J)`. From now on we repeat the algorithm for each visited checkpoint.    
 The time complexity of this solution is `O(N × M)`.  
 
 
