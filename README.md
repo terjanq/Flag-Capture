@@ -18,6 +18,7 @@ I started my journey with such competitions in late **Dec**ember **2017** by joi
 - [Grid It!](https://github.com/terjanq/Flag-Capture/tree/master/Practice/CTFLearn/GridIt#grid-it---write-up-by-terjanq) (Web)
 
 ### List of events I have participated in:
+- [TamuCTf 2018](https://github.com/terjanq/Flag-Capture/tree/master/TamuCTF%202018#tamuctf-2018) (Feb 2018)
 - [Xiomara 2018](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018#xiomara-2018) (Feb 2018)
 - [Harekaze CTF](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018#harekaze-ctf-2018) (Feb 2018)
 - [EvlzCTF](https://github.com/terjanq/Flag-Capture/tree/master/Evlz%202018#evlzctf-2018) (Feb 2018)
