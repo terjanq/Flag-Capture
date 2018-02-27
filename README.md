@@ -28,6 +28,13 @@ I started my journey with such competitions in late **Dec**ember **2017** by joi
 - [34C3 CTF](https://github.com/terjanq/Flag-Capture/tree/master/34c3ctf#34c3-ctf) (Dec 2017)
 
 
+### Achievements
+
+On February 26, 2018 we have been placed in the TOP10 best teams on the [ctf.time] website! 
+
+![top10.png]
+
+
 
 
 
@@ -37,3 +44,9 @@ ____
 #### Sources:
 - https://ctftime.org/team/33893
 - https://ctftime.org/user/34168
+
+
+
+
+[ctf.time]:<http://ctftime.org>
+[top10.png]:<./top10.png>
