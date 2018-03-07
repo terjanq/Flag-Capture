@@ -18,9 +18,10 @@ I started my journey with such competitions in late **Dec**ember **2017** by joi
 - [Grid It!](https://github.com/terjanq/Flag-Capture/tree/master/Practice/CTFLearn/GridIt#grid-it---write-up-by-terjanq) (Web)
 
 ### List of events I have participated in:
-- [TamuCTf 2018](https://github.com/terjanq/Flag-Capture/tree/master/TamuCTF%202018#tamuctf-2018) (Feb 2018)
-- [Xiomara 2018](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018#xiomara-2018) (Feb 2018)
-- [Harekaze CTF](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018#harekaze-ctf-2018) (Feb 2018)
+- [Pragyan CTF 2018](https://github.com/terjanq/Flag-Capture/tree/master/Pragyan#pragyan-ctf-2018) (Mar 2018, 3rd place)
+- [TamuCTf 2018](https://github.com/terjanq/Flag-Capture/tree/master/TamuCTF%202018#tamuctf-2018) (Feb 2018, 9th place)
+- [Xiomara 2018](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018#xiomara-2018) (Feb 2018, 10th place)
+- [Harekaze CTF](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018#harekaze-ctf-2018) (Feb 2018, 22nd place)
 - [EvlzCTF](https://github.com/terjanq/Flag-Capture/tree/master/Evlz%202018#evlzctf-2018) (Feb 2018)
 - [ShariffCTF 8](https://github.com/terjanq/Flag-Capture/tree/master/Shariff%202018#sharifctf-8) (Feb 2018)
 - [AceBear](https://github.com/terjanq/Flag-Capture/tree/master/AceBear%202018#acebear-security-contest) (Jan 2018)
