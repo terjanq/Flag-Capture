@@ -1,0 +1,107 @@
+language: python
+
+matrix:
+    include:
+        # Run as a regular user
+        - os: linux
+          python: 2.7
+          env:
+            - SCAPY_COVERAGE=yes
+
+        - os: linux
+          python: 3.3
+          env:
+            - SCAPY_COVERAGE=yes
+
+        - os: linux
+          python: 3.4
+          env:
+            - SCAPY_COVERAGE=yes
+
+        - os: linux
+          python: 3.5
+          env:
+            - SCAPY_COVERAGE=yes
+
+        - os: linux
+          python: 3.6
+          env:
+            - SCAPY_COVERAGE=yes
+
+        - os: linux
+          python: pypy
+          env:
+            - SCAPY_COVERAGE=yes
+
+        - os: linux
+          python: pypy3
+          env:
+            - SCAPY_COVERAGE=yes
+
+        - os: osx
+          language: generic
+          env:
+            - SCAPY_COVERAGE=yes
+
+        - os: osx
+          language: generic
+          env:
+            - SCAPY_USE_PCAPDNET=yes SCAPY_COVERAGE=yes
+
+        # Run as root
+        - os: linux
+          sudo: required
+          python: 2.7
+          env:
+            - SCAPY_SUDO=sudo SCAPY_COVERAGE=yes
+
+        - os: linux
+          sudo: required
+          python: 3.3
+          env:
+            - SCAPY_SUDO=sudo SCAPY_COVERAGE=yes
+
+        - os: linux
+          sudo: required
+          python: 3.4
+          env:
+            - SCAPY_SUDO=sudo SCAPY_COVERAGE=yes
+
+        - os: linux
+          sudo: required
+          python: 3.5
+          env:
+            - SCAPY_SUDO=sudo SCAPY_COVERAGE=yes
+
+        - os: linux
+          sudo: required
+          python: 3.6
+          env:
+            - SCAPY_SUDO=sudo SCAPY_COVERAGE=yes
+
+        - os: linux
+          sudo: required
+          python: 2.7
+          virtualenv:
+            system_site_packages: true
+          env:
+            - SCAPY_SUDO=sudo SCAPY_USE_PCAPDNET=yes SCAPY_COVERAGE=yes
+
+        - os: osx
+          language: generic
+          env:
+            - SCAPY_SUDO=sudo SCAPY_COVERAGE=yes
+
+        - os: osx
+          language: generic
+          env:
+            - SCAPY_SUDO=sudo SCAPY_USE_PCAPDNET=yes SCAPY_COVERAGE=yes
+
+        - os: osx
+          language: generic
+          env:
+            - TOXENV=py36-osx_non_root,py36-osx_root,codecov
+
+install: bash .travis/install.sh
+
+script: bash .travis/test.sh

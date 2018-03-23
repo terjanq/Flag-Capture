@@ -1,0 +1,4 @@
+cd pasta
+mix run
+iex -S mix
+
