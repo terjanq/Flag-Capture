@@ -39,9 +39,9 @@ In the tab `Bug Bounty` we have a simple form allowing us to send the suspicious
 
 ### CSRF page &ndash; add_share
 
-So what we want to do is to craft a `csrf page` which will allow us to do malicious things using admin's account. But every form is protected with `crsf token` and we have to somehow steal admin's `crsf` cookie. Have we? 
+So what we want to do is to craft a `csrf page` which will allow us to do malicious things using admin's account. But every form is protected with `csrf token` and we have to somehow steal admin's `csrf` cookie. Have we? 
 
-Earlier posted script adding `crsf token` is hosted on `https://yeunote.ctf.yeuchimse.com/csrf.js` so we can just attach this script on our page. But if we try that, we get the `no permissions` error or something like that. A quick inspection showed that the reason for this is the `referrer header` set to `https://yoursite`. 
+Earlier posted script adding `csrf token` is hosted on `https://yeunote.ctf.yeuchimse.com/csrf.js` so we can just attach this script on our page. But if we try that, we get the `no permissions` error or something like that. A quick inspection showed that the reason for this is the `referrer header` set to `https://yoursite`. 
 Hopefully no referrer is allowed and adding `<meta name="referrer" content="no-referrer">` solves the problem.
 
 Another protection we have to bypass is `if (document.domain == 'yeunote.ctf.yeuchimse.com'`. We cannot change the value of this property directly because of `CORS Policy` so `document.domain = 'yeunote.ctf.yeuchimse.com'` won't work. But it is easy to bypass. Just overwrite the property with new one before `csrf.js` is loaded - `Object.defineProperty(document, 'domain', {value: "yeunote.ctf.yeuchimse.com"});`. 
