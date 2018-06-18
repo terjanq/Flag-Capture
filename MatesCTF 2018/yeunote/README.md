@@ -67,7 +67,7 @@ The third one is using backend app. In order to successfully post the tweet we h
 
 But how we do it now? I've spent hours and hours trying to make it work but I didn't manage o get the password by myself... Well, the guy who solved the task left the tweet undeleted so anyone could see the password! I tried to report this but nor the `admins` nor the `team jinmo123x` were responding to my requests. Link to the tweet: [https://twitter.com/wwydid/status/1008044466677039105](https://twitter.com/wwydid/status/1008044466677039105)
 
-My attempt was to log in the admin to my dummy twitter account. I could achieve that using a similar method as for the previous step but with a little help of backed script generating the `authenticity_token`. But it didn't work because Twitter is not accepting any referrer different from `https://twitter.com` including `no referrer`. 
+My attempt was to log in the admin to my dummy twitter account and then share the password into this account (no confirmation needed). I could achieve that using a similar method as for the previous step but with a little help of backed script generating the `authenticity_token`. But it didn't work. Twitter is not accepting any referrer different from `https://twitter.com` including `no referrer`. 
 
 I was also trying to generate `oath token` for flag note which would allow me to terminate the redirection from `twitter` to `yeunote` and send the generated URL to the admin. But this trial results with `Note not found` error and I couldn't find any way to bypass it.
 
