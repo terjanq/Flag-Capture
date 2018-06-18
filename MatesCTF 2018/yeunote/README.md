@@ -61,7 +61,8 @@ The complete document [csrf.html]
 
 After the previous step, we are now able to visit `https://yeunote.ctf.yeuchimse.com/note/view/3` but it results with `password` prompt. So our task now is to get the password somehow.
 
-buttons options for each note: `Facebook`, `Google` and `Twitter`. The first two will redirect us to the facebook/google page and ask our permission to share the post containing the full URL, i.e `https://yeunote.ctf.yeuchimse.com/note/view/<note id>?p=<password>`. 
+On the page `My Notes` there are buttons attached for each note: `Facebook`, `Google` and `Twitter`. The first two will redirect us to the facebook/google page and ask our permission to share the post containing the full URL, i.e `https://yeunote.ctf.yeuchimse.com/note/view/<note id>?p=<password>`. 
+
 The third one is using backend app. In order to successfully post the tweet we have to authorize the app before clicking the button, but only once. Clicking on the button redirects us to `https://yeunote.ctf.yeuchimse.com/note/twitter/<note id>` which if we have the note with the `<note id>` in our inventory redirects us to `https://api.twitter.com/oauth/authenticate?oauth_token=<oauth token>`. If we already authorized the app then it will redirect us to `https://yeunote.ctf.yeuchimse.com/note/twitter?oauth_token=<oauth token>&oauth_verifier=<oauth verifier>` and if everything went alright we will see the tweet with an URL containing the password on our twitter account. 
 
 But how we do it now? I've spent hours and hours trying to make it work but I didn't manage o get the password by myself... Well, the guy who solved the task left the tweet undeleted so anyone could see the password! I tried to report this but nor the `admins` nor the `team jinmo123x` were responding to my requests. Link to the tweet: [https://twitter.com/wwydid/status/1008044466677039105](https://twitter.com/wwydid/status/1008044466677039105)
