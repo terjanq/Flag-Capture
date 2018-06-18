@@ -35,7 +35,7 @@ Where `bdf0ae82-2284-4b7f-a0b3-26e6d291ff1f` is a value from the  `csrf` cookie.
 
 
 ### Bug Bounty
-In the tab `Bug Bounty` we have a simple form allowing us to send the suspicious URL to the admin. There is also `description` field but I don't think it does anything at all. If we send the admin URL `http://yoursite/csrf.html` he will visit the link using `headless chrome 67`. 
+In the tab `Bug Bounty` we have a simple form allowing us to send the suspicious URL to the admin. There is also `description` field but I don't think it does anything at all. If we send the URL `http://yoursite/csrf.html` he will visit the link using `headless chrome 67`. 
 
 ### CSRF page &ndash; add_share
 
