@@ -29,7 +29,7 @@
 	<script>
 		function addToShare(post_id, email){
 			document.forms[0].action = `https://yeunote.ctf.yeuchimse.com/note/add_share/${post_id}`;
-			document.forms[0].querySelector('input[name=emails]').value = email;
+			document.forms[0].emails.value = email;
 			document.forms[0].submit();
 		}
 
