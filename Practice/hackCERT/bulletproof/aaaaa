@@ -1,0 +1,25 @@
+<?php
+
+require('../auth_funcs.php');
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+$auth = false;
+
+if (isset($_COOKIE['remember_me'])) {
+    $obj = json_decode($_COOKIE['remember_me'], true);
+    
+    if ($obj['login'] == 'demo' && $obj['token'] == getUserAuthToken('demo')) {
+        $auth = 'demo';
+    }
+    
+    if ($obj['login'] == 'admin' && $obj['token'] == getUserAuthToken('admin')) {
+        $auth = 'admin';
+    }
+}
+
+if (!$auth) {
+    echo('Sorry, you are not authenticated :(<br>');
+
+    if (isset($_COOKIE['remember_me'])) {
+        echo('<pre>'.htmlentities(var_ex
