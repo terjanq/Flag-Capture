@@ -20,7 +20,7 @@ I started my journey with such competitions in late **Dec**ember **2017** by joi
 
 ### List of events I have participated in:
 - [Google Capture The Flag 2018 (Quals)](https://ctftime.org/event/623) (June 2018, *85th place*)
-- [Security Fest CTF](https://ctftime.org/event/622) (May 2018, *12th place)
+- [Security Fest CTF](https://ctftime.org/event/622) (May 2018, *12th place*)
 - [PlaidCTF 2018](https://ctftime.org/event/617) (May 2018, *39th place*)
 - [ASIS CTF Quals 2018](https://ctftime.org/event/568) (Apr 2018, *42nd place*)
 - [NoNameCon CTF Quals 2018](https://ctftime.org/event/616) (Apr 2018, *11th place*)
