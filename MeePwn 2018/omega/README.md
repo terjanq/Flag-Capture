@@ -34,9 +34,9 @@ Connection: close
 
 In this payload I managed to cheat the `apache2`, the `parse_url` and the `strpos(urldecode($remote),'..')` at one shoot!
 
-`Apache2` will move into a not existing directory `..@alien.somewhere.meepwn.team` then will go back one level down `../` back to the `root` folder. It is important that there are two `slashes` otherwise it won't work. I suppose it is because it just cleverly removes `..@alien.somewhere.meepwn.team/../` from the file path. 
+`Apache2` will move into a not existing directory `..@alien.somewhere.meepwn.team` then will go one level down `../` back to the `root` folder. It is important that there are two `slashes` otherwise it won't work. I suppose it is because it just cleverly removes `..@alien.somewhere.meepwn.team/../` from the file path. 
 
-My first try after I discovered that we could travel over directories like that was to create `..://alien.somewhere.meepwn.team/../..//index.php` so the `parse_url` evaluates to:
+My first try after I discovered that we could travel over directories like that was to create `..://alien.somewhere.meepwn.team/../..//index.php` request so the `parse_url` evaluates to:
 
 ```
 Array
