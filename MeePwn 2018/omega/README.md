@@ -99,7 +99,7 @@ After having the right `PHPSESSID` in the cookies we get the following form on t
 </form>
 ```
 If we send a message with `non alphanumeric characters` we see `Saved in alien_message/fc11ce87435398abd6a28dd622639988.alien`. In opposition on the `omega_sector` where we only can use `alphanumeric characters`. We can abuse the `type` attribute and we can send the request `type=/../super_secret_shell.php`.  
-The serious restriction was that messages could be at least `40 characters` long.
+The serious restriction was that messages could be at most `40 characters` long.
 
 At first, I thought that it is something like `race condition` that two scripts write into one file at the same time resulting in mixed content but it didn't work.
 
@@ -146,6 +146,8 @@ After the competition me and @Jelle.V.D golfed a little and managed to get much 
 ```php
 <?=`/???/??? ../*`;
 ```
+
+
 
 
 
