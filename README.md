@@ -7,16 +7,18 @@ I mostly solve problems from `Web` category but I am also interested in other to
 I started my journey with such competitions in late **Dec**ember **2017** by joining the academic team: **c@fish**. 
 
 ### List of my write-ups:
-- [Yeunote](https://github.com/terjanq/Flag-Capture/tree/master/MatesCTF%202018/yeunote#yeunote---writeup-by-terjanq) (Web)
-- [Captcha Generator](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Captcha%20Generator#captcha-generator--write-up-by-terjanq) (Misc)
-- [Mario in maze](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Mario%20in%20Maze#mario-in-maze--write-up-by-terjanq) (Misc, Algorithms)
-- [Mario's dream](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Marioes%20dream#marios-dream--write-up-by-terjanq) (Misc, Algorithms)
-- [Logger](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Logger#logger--write-up-by-terjanq) (Net, Rev, Misc, Web)
-- [Sokosoko Secure Uploader](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Sokosoko%20Secure%20Uploader#sokosoko-secure-uploader) (Web)
-- [Unnormalized-form Data](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Unnormalized-form-Data#unnormalized-form-data--write-up-by-terjanq) (Misc,Forensics)
-- [Obfuscated Password Checker](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Obfuscated%20Password%20Checker#obfuscated-password-checker--write-up-by-terjanq) (Web)
-- [Recursive zip](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Recursive-zip#recursive-zip--write-up-by-terjanq) 
-- [Grid It!](https://github.com/terjanq/Flag-Capture/tree/master/Practice/CTFLearn/GridIt#grid-it---write-up-by-terjanq) (Web)
+- [OmegaSector](https://github.com/terjanq/Flag-Capture/tree/master/MeePwn%202018/omega#omegasector--write-up-by-terjanq) (MeePwn2018 `Web`)
+- [Cat Chat](https://github.com/terjanq/google-ctf-writeups#cat-chat--write-up-by-terjanq) (GoogleCTF 2018 `Web`)
+- [Yeunote](https://github.com/terjanq/Flag-Capture/tree/master/MatesCTF%202018/yeunote#yeunote---writeup-by-terjanq) (MatesCTF 2018 `Web`)
+- [Captcha Generator](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Captcha%20Generator#captcha-generator--write-up-by-terjanq) (Xiomara 2018 `Misc`)
+- [Mario in maze](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Mario%20in%20Maze#mario-in-maze--write-up-by-terjanq) (Xiomara 2018 `Misc` `Algorithms`)
+- [Mario's dream](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Marioes%20dream#marios-dream--write-up-by-terjanq) (Xiomara 2018 `Misc` `Algorithms`)
+- [Logger](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Logger#logger--write-up-by-terjanq) (Harekaze 2018 `Net` `Rev` `Misc` `Web`)
+- [Sokosoko Secure Uploader](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Sokosoko%20Secure%20Uploader#sokosoko-secure-uploader) (Harekaze 2018 `Web`)
+- [Unnormalized-form Data](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Unnormalized-form-Data#unnormalized-form-data--write-up-by-terjanq) (Harekaze 2018 `Misc` `Forensics`)
+- [Obfuscated Password Checker](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Obfuscated%20Password%20Checker#obfuscated-password-checker--write-up-by-terjanq) (Harekaze 2018 `Web`)
+- [Recursive zip](https://github.com/terjanq/Flag-Capture/tree/master/Harekaze2018/Recursive-zip#recursive-zip--write-up-by-terjanq) (Harekaze 2018 `Misc`)
+- [Grid It!](https://github.com/terjanq/Flag-Capture/tree/master/Practice/CTFLearn/GridIt#grid-it---write-up-by-terjanq) (CTFLearn Website `Web`)
 
 ### List of events I have participated in:
 - [Google Capture The Flag 2018 (Quals)](https://ctftime.org/event/623) (June 2018, *85th place*)
