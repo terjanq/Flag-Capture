@@ -2,7 +2,7 @@
 *CTFZone 2018 Quals, 7/24/18*
 
 ## Description
-We are provided with a simple website
+We are provided with a simple website  
 ![website]
 
 and the only functionalities are `login/register`, `edit profile`, `support`. 
