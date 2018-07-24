@@ -47,7 +47,7 @@ and means that
 
 ## Solution
 
-Based on the findings it was obvious that our goal is to do a `CSRF` (Cross-Origin Request Forgery) attack, in order to change our status to `premium`, and the only missing piece is the `token`. It was a very tough task to steal and then send the token in `34 bytes`! With the help of [@gros] from my team we managed to create a payload `"><svg/onload=$.globalEval(name)` 32 bytes long where `name` is a just short form of `window.name` property. We assigned it by sending the admin to our webpage where we triggered `window.open('http://web-04.v7frkwrfyhsjtbpfcppnu.ctfz.one/profile.php?uuid="><svg/onload=$.globalEval(name)', <long payload>)` setting `window.name` to `<long payload>`.  
+Based on the findings it was obvious that our goal is to do a `CSRF` (Cross-Origin Request Forgery) attack, in order to change our status to `premium`, and the only missing piece is the `token`. It was a very tough task to steal and then send the token in `36 bytes`! With the help of [@gros] from my team we managed to create a payload `"><svg/onload=$.globalEval(name)` 32 bytes long where `name` is just a short form of `window.name` property. We assigned it by sending the admin to our webpage where we triggered `window.open('http://web-04.v7frkwrfyhsjtbpfcppnu.ctfz.one/profile.php?uuid="><svg/onload=$.globalEval(name)', <long payload>)` setting `window.name` to `<long payload>`.  
     The complete [forms.html] looked like:  
 ```HTML
 <script>
