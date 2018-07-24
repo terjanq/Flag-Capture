@@ -7,8 +7,9 @@ I mostly solve problems from `Web` category but I am also interested in other to
 I started my journey with such competitions in late **Dec**ember **2017** by joining the academic team: **c@fish**. 
 
 ### List of my write-ups:
-- [OmegaSector](https://github.com/terjanq/Flag-Capture/tree/master/MeePwn%202018/omega#omegasector--write-up-by-terjanq) (MeePwn2018 `Web`)
-- [Cat Chat](https://github.com/terjanq/google-ctf-writeups#cat-chat--write-up-by-terjanq) (GoogleCTF 2018 `Web`)
+- [Magican](https://github.com/Acee11/ctf-writeups/tree/master/ctfzone18-quals/mobile-bank) (CTFZone2018 Quals `Web` `XSS` `CSRF` `golfing`)
+- [OmegaSector](https://github.com/terjanq/Flag-Capture/tree/master/MeePwn%202018/omega#omegasector--write-up-by-terjanq) (MeePwn2018 `Web` `PHP backdoor` `golfing`)
+- [Cat Chat](https://github.com/terjanq/google-ctf-writeups#cat-chat--write-up-by-terjanq) (GoogleCTF 2018 `Web` `CSSi` `CSRF`)
 - [Yeunote](https://github.com/terjanq/Flag-Capture/tree/master/MatesCTF%202018/yeunote#yeunote---writeup-by-terjanq) (MatesCTF 2018 `Web`)
 - [Captcha Generator](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Captcha%20Generator#captcha-generator--write-up-by-terjanq) (Xiomara 2018 `Misc`)
 - [Mario in maze](https://github.com/terjanq/Flag-Capture/tree/master/Xiomara%202018/Mario%20in%20Maze#mario-in-maze--write-up-by-terjanq) (Xiomara 2018 `Misc` `Algorithms`)
@@ -21,6 +22,8 @@ I started my journey with such competitions in late **Dec**ember **2017** by joi
 - [Grid It!](https://github.com/terjanq/Flag-Capture/tree/master/Practice/CTFLearn/GridIt#grid-it---write-up-by-terjanq) (CTFLearn Website `Web`)
 
 ### List of events I have participated in:
+- [CTFZone 2018 Quals](https://ctftime.org/event/632) (July 2018, *12th place*)
+- [Meepwn CTF Quals 2018](https://ctftime.org/event/625) (July 2018, *62nd place*)
 - [Google Capture The Flag 2018 (Quals)](https://ctftime.org/event/623) (June 2018, *85th place*)
 - [Security Fest CTF](https://ctftime.org/event/622) (May 2018, *12th place*)
 - [PlaidCTF 2018](https://ctftime.org/event/617) (May 2018, *39th place*)
