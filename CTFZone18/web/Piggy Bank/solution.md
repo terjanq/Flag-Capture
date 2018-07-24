@@ -1,0 +1,1 @@
+1505</receiver_wallet_num><sender_wallet_num xsi:type="xsd:decimal">1337</sender_wallet_num><amount xsi:type="xsd:float">1000000</amount><receiver_wallet_num>

