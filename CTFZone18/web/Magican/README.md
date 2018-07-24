@@ -7,7 +7,7 @@ We are provided with a simple website
 
 and the only functionalities are `login/register`, `edit profile`, `support`. 
 
-`Support` section allows us to send two types of messages to the admin: `Problems with Profile` and `Link to profile`. Each of them contains two fields: `Link to profile` and `Message`.  
+`Support` section allows us to send two types of messages to the admin: `Problems with Profile` and `Get premium account`. Each of them contains two fields: `Link to profile` and `Message`.  
 ![support]
 
 `Edit profile` section allows us to edit our name.  
