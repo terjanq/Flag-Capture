@@ -7,7 +7,7 @@ I mostly solve problems from `Web` category but I am also interested in other to
 I started my journey with such competitions in late **Dec**ember **2017** by joining the academic team: **c@fish**. 
 
 ### List of my write-ups:
-- [Magican](https://github.com/Acee11/ctf-writeups/tree/master/ctfzone18-quals/mobile-bank) (CTFZone2018 Quals `Web` `XSS` `CSRF` `golfing`)
+- [Magican](https://github.com/terjanq/Flag-Capture/tree/master/CTFZone18/web/Magican#magican--write-up-by-terjanq) (CTFZone2018 Quals `Web` `XSS` `CSRF` `golfing`)
 - [OmegaSector](https://github.com/terjanq/Flag-Capture/tree/master/MeePwn%202018/omega#omegasector--write-up-by-terjanq) (MeePwn2018 `Web` `PHP backdoor` `golfing`)
 - [Cat Chat](https://github.com/terjanq/google-ctf-writeups#cat-chat--write-up-by-terjanq) (GoogleCTF 2018 `Web` `CSSi` `CSRF`)
 - [Yeunote](https://github.com/terjanq/Flag-Capture/tree/master/MatesCTF%202018/yeunote#yeunote---writeup-by-terjanq) (MatesCTF 2018 `Web`)
