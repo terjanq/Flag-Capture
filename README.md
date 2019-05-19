@@ -6,7 +6,12 @@ I mostly solve problems from `Web` category but I am also interested in other to
 
 I started my journey with such competitions in late **Dec**ember **2017** by joining the academic team: **c@fish**. 
 
+The **c@fish** team merged with **Just Hit the Core** resulting with **justCatTheFish** team. We have been placed 40th in [2018](https://ctftime.org/stats/2018). Currently stick with top20.
+
+
 ### List of my write-ups:
+- [\[a-z().\]](https://gist.github.com/terjanq/a571826c6bb08ae0dfa4ef57e03b5b72) (Harekaze 2019 `Misc` `Web` `JS` `golfing`)
+- [SQLite Voting](https://gist.github.com/terjanq/a571826c6bb08ae0dfa4ef57e03b5b72) (Harekaze 2019 `Web` `SQLi` `WAF`)
 - [Magican](https://github.com/terjanq/Flag-Capture/tree/master/CTFZone18/web/Magican#magican--write-up-by-terjanq) (CTFZone2018 Quals `Web` `XSS` `CSRF` `golfing`)
 - [OmegaSector](https://github.com/terjanq/Flag-Capture/tree/master/MeePwn%202018/omega#omegasector--write-up-by-terjanq) (MeePwn2018 `Web` `PHP backdoor` `golfing`)
 - [Cat Chat](https://github.com/terjanq/google-ctf-writeups#cat-chat--write-up-by-terjanq) (GoogleCTF 2018 `Web` `CSSi` `CSRF`)
@@ -44,11 +49,11 @@ I started my journey with such competitions in late **Dec**ember **2017** by joi
 - [34C3 CTF](https://github.com/terjanq/Flag-Capture/tree/master/34c3ctf#34c3-ctf) (Dec 2017, *77th place*)
 
 
-### Achievements
+<!-- ### Achievements
 
 On February 26, 2018 we have been placed in the TOP10 best teams on the [ctf.time] website! 
 
-![top10.png]
+![top10.png] -->
 
 
 
