@@ -20,7 +20,7 @@ After playing around with the webiste I noticed an interesting template in *upda
 Given that, I suspected the problem to be [Server-side Template Injection] related.
 
 ### Handlebars and 0day
-The first thing to try with templates is always `{{7*7}}`. That can quickly confirm whether we hit mentioned template injection. When doing I could notice the following error:
+The first thing to try with templates is always `{{7*7}}`. That can quickly confirm whether we hit mentioned Template Injection. When doing so I could notice the following error:
 
 ```
 Error: Parse error on line 1:
