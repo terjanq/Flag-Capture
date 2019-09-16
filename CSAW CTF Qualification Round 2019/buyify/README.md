@@ -169,7 +169,7 @@ item = jwt.verify(req.body.token, store.key);
 from `checkout(req, res)`  function in [store.js] does not throw an error, i.e. the signature matches the key.
 
 ### Let's head back to template injection
-So, I mentioned earlier about this great bug in `Shopify` store that allowed to get an `RCE` but that this does not work anymore. The reason why we cannot get the remote code execution anymore is that any attempt for calling the `constructor` of any object will return `undefined`. Without a `constructor` it will be hard to iterate over contexts or to evaluate a string. But in the hint, it was said that we do not need to achieve `RCE`.
+So, I mentioned earlier about this great bug in `Shopify` store that allowed to get an `RCE` and that does not work anymore. The reason why we cannot get the remote code execution using that trick is that any attempt to calling the `constructor` of any object will return `undefined`. Without a `constructor` it will be hard to iterate over contexts or to evaluate a string. But in the hint, it was said that we do not need to achieve `RCE`.
 
 To solve the challenge we would either want to read the `store.key` or override it with a value known to us. The syntax of [handlebars] is limited but it has [helper functions] that can do some crazy things. To take advantage of [#Store-object](#Store-object) we would ideally want to override the Object prototype and define our own [setter] and [getter] on `key` property so we can either read the key or replace it with controlled by us value. 
 
@@ -188,7 +188,7 @@ In plain `javascript` it could look like:
   )
 ```
 
-Since we cannot access any `constructor` property, getting reference to `Object` is a hard task. But there is another way to define [setter] or [getter]. There are deprecated features like [\_\_defineSetter\_\_] and [\_\_defineGetter\_\_] that still work. These can be called in [handlebars] for example in that payload: `{{this.__proto__.defineGetter}}`. Full payload looks like:
+Since we cannot access any `constructor` property, getting reference to `Object` is a hard task. But there is another way to define [setter] or [getter]. There are deprecated features like [\_\_defineSetter\_\_] and [\_\_defineGetter\_\_] that still work. These can be called in [handlebars] for example in that payload: `{{this.__proto__.__defineGetter__}}`. I managed to use this and override the prototype with the following payload:
 
 ```js
 {{#with this.__proto__ as |o|}}
@@ -197,10 +197,13 @@ Since we cannot access any `constructor` property, getting reference to `Object`
 {{/with}}
 ```
 
-and is equivalent to the `Object.defineProperty` mentioned above. What it does is basically setting a context to prototype of `[object]` and then calling [\_\_defineSetter\_\_] and [\_\_defineGetter\_\_] that set `key` property to `[object].toString()`. Now accessing `[object].key` will always return `[object Object]` as a string. 
+It is equivalent to the `Object.defineProperty` mentioned above. What it does is:
+1) Setting a context to the prototype of `[object]` and aliasing it to `|o|` via [#with] helper.
+2) Definining [\_\_defineSetter\_\_] and [\_\_defineGetter\_\_] on `Object.prototype` with `key` as attribute and `this.toString()` as a callback. 
+3) After that, accessing `[object].key` on newly created objects shall now return `[object Object]` as a string and it cannot be overriden using `[object].key = ...` because we overrode a setter function. 
 
 ### Win the lottery
-So now, the only thing left to do is creating a valid `token` via
+So now, the last piece required to solve the challenge is forging a valid `token` with `[object Object]` as a key.
 
 ```py
 # Forge flag token
@@ -212,13 +215,14 @@ flag_token = jwt.encode({
 
 ```
 
-and purchasing the flag for `$1`. 
+Then using it to purchase the flag for `$1` in our store. 
 
-I automated the process with [solve.py] where I briefly described each step. Running the program gave me the flag **flag{npm_devs_are_pretty_bad_at_fixing_bugs}**
+I automated the process with [solve.py] where I briefly described each step. By executing the exploit I got the flag **flag{npm_devs_are_pretty_bad_at_fixing_bugs}**
 
-```
-('store_id:', '8f7200eeca32be27')
-('connect.sid:', 's%3ADSlt0-0SNSLZoouWqDABjgFzqVEMuByq.dUXN3f5ujGaKv1FGT0dr2m4RwtVpn6lXmziAc1ou3Ik')
+```sh
+$ python solve.py
+('store_id:', 'fedeb307e6104baf')
+('connect.sid:', 's%3A1vs4vfSD3GEal8dD2lGuRAJgtUk2XIO0.m%2BE252u74l2ffXB1fOAuNPu1awVwzANQmg9KLqOfWmk')
 Congrats! Your flag is flag{npm_devs_are_pretty_bad_at_fixing_bugs}!
 ```
 
@@ -229,7 +233,7 @@ Congrats! Your flag is flag{npm_devs_are_pretty_bad_at_fixing_bugs}!
 [Handlebars template injection and RCE in a Shopify app]:<http://mahmoudsec.blogspot.com/2019/04/handlebars-template-injection-and-rce.html>
 [store.js]:<./store.js>
 [server.js]:<./server.js>
-[helper functions]:<https://handlebars-draft.knappi.org/guide/block-helpers.html#the-with-helper>
+[helper functions]:<https://handlebars-draft.knappi.org/guide/block-helpers.html>
 [setter]:<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set>
 [getter]:<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get>
 [\_\_defineSetter\_\_]:<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineSetter__>
@@ -239,3 +243,4 @@ Congrats! Your flag is flag{npm_devs_are_pretty_bad_at_fixing_bugs}!
 [@terjanq]:<https://twitter.com/terjanq>
 [files]:<./buyify.tar.gz>
 [Server-side Template Injection]:<https://portswigger.net/blog/server-side-template-injection>
+[#with]:<https://handlebars-draft.knappi.org/guide/block-helpers.html#the-with-helper>
