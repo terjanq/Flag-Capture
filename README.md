@@ -10,6 +10,8 @@ The **c@fish** team merged with **Just Hit the Core** resulting with **justCatTh
 
 
 ### List of my write-ups:
+- [Buyify](https://github.com/terjanq/Flag-Capture/tree/master/CSAW%20CTF%20Qualification%20Round%202019/buyify#buyify-web-500-15-solves-by-terjanq)(CSAW 2019 `Web` `Template Injection`)
+- [All writeups](https://github.com/justcatthefish/ctf/tree/master/2019-04-25-Angstrom2019/web#%C3%A5ngstromctf-2019----quick-write-ups-by-terjanq-web) (Angstrom 2019 `Web` `Misc`)
 - [\[a-z().\]](https://gist.github.com/terjanq/a571826c6bb08ae0dfa4ef57e03b5b72) (Harekaze 2019 `Misc` `Web` `JS` `golfing`)
 - [SQLite Voting](https://gist.github.com/terjanq/a571826c6bb08ae0dfa4ef57e03b5b72) (Harekaze 2019 `Web` `SQLi` `WAF`)
 - [Magican](https://github.com/terjanq/Flag-Capture/tree/master/CTFZone18/web/Magican#magican--write-up-by-terjanq) (CTFZone2018 Quals `Web` `XSS` `CSRF` `golfing`)
