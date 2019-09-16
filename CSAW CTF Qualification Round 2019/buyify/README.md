@@ -5,14 +5,15 @@ This is a solution of [Buyify] web-task from [CSAW 2019 (Quals)] ctf. The challe
 
 
 
-### Quick look
+### A quick look
 We are provided with a simple [website] where we can:
-- visit `flag` store and buy `flag` there
-- create our own store
-- update our store description
-- create items in our store
+- visit `flag store` and buy `flag` there
+- create new store
+- update created store description
+- create items in created store
 
-After playing around with the webiste I noticed an interesting template in *update store description*
+After playing around with the webiste I noticed an interesting template in *update store description* page
+
 ```html
 <p class="title">{{ store_name }} Store</p>
 <p class="subtitle">Welcome to a store for all things {{ store_name }}</p>
@@ -20,7 +21,7 @@ After playing around with the webiste I noticed an interesting template in *upda
 Given that, I suspected the problem to be [Server-side Template Injection] related.
 
 ### Handlebars and 0day
-The first thing to try with templates is always `{{7*7}}`. That can quickly confirm whether we hit mentioned Template Injection. When doing so I could notice the following error:
+The first thing to try with templates is always `{{7*7}}`. That can quickly confirm whether we hit the mentioned Template Injection or not. When doing so a wild error appeared:
 
 ```
 Error: Parse error on line 1:
@@ -32,12 +33,13 @@ Expecting 'ID', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', got 
 ....
 ```
 
-From reading the error, we can see that the library responsible for compiling that template is [handlebars]. Quick research led me to a great article [Handlebars template injection and RCE in a Shopify app]. Mentioned in there vulnerability was unfortunately patched but all the details, starting with the challenge name, clearly point to *bypassing* the fix.
+From reading through the error, we can see that the library responsible for compiling that template is [handlebars]. Quick research led me to a great article [Handlebars template injection and RCE in a Shopify app] about a vulnerability in that library. The mentioned in there vulnerability was unfortunately patched but all the details, starting with the challenge name, clearly point to *bypassing* the fix.
 
-However, we could see the hint 
+However, there was also a hint included
+
 > *HINT: Templates are a prototype for fun and also, don't worry, you don't need rce*
 
-so we most likely didn't need to search for another critical vulnerability in the library. 
+that suggests that there is no need for searching for another critical vulnerability in the library. 
 
 In the following sections, I will present a solution split into pieces that are required to understand the problem and omit all the wrong directions I took.
 
@@ -55,7 +57,7 @@ Cookie: connect.sid=s%3AOi5yhl-2orxSQ5iN9KzeprT9FThgtxPX.EXOINstCO0gUpXWeK7URQli
 token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZsYWcuZmxhZyIsInByaWNlIjoxMDAwMDAwMDAsImlhdCI6MTU2ODU4Nzg0Mn0.c1RVg_POsjNIT0L0LHBkJ5db12BKPHHbundirMsJdaA
 ```
 
-After decoding the `jwt token` we get a `JSON` object:
+After decoding the token which is an encoded [JSON Web Token] we get a `JSON` object:
 
 ```json
 {
@@ -65,10 +67,10 @@ After decoding the `jwt token` we get a `JSON` object:
 }
 ```
 
-Unfortunately, we only get `$100` on start so the purchase will not be completed. 
+Unfortunately, we only get `$100` on the start so the purchase will not be completed.
 
 ### Token format
-The `id` in the token is created by joining `store_name` with the `item_name`, we can see that happening in [server.js]:
+The `id` in the token is created by concatenating `store_name` and the `item_name`. We can see that happening in [server.js]:
 
 ```js
 // Create an item, assign it an id, and store its callback
@@ -79,7 +81,7 @@ function create_item(id, name, callback) {
 }
 ```
 
-Then the token itself is a `jwt` signed with `store.key` which we can find in [store.js]: 
+The token itself is a `jwt` signed with `store.key` which we can find in [store.js]: 
 
 ```js
 // Sign an item for sale in the store
@@ -90,7 +92,7 @@ function sign_item(item) {
 ```
 
 ### Store object
-In the [store.js] we can also notice that the `store` object looks like the following:
+In the [store.js] we can also notice that the `store` has the following structure:
 
 ```js
   /* === Instance === */
@@ -104,9 +106,9 @@ In the [store.js] we can also notice that the `store` object looks like the foll
   };
 ```
 
-One strange thing is that the `key` attribute is not defined here, but we saw earlier that `store.key` was used to encode the token.
+A very odd thing is that the `key` attribute is not defined here, but we saw earlier that `store.key` was used to encode the token.
 
-In [store.js] we can find the place where `store.key` is actually defined: 
+In [store.js] we can find a place where `store.key` is actually defined: 
 
 ```js
 // Invalidate and resign all items
@@ -120,7 +122,7 @@ function update_store() {
 }
 ```
 
-This looks impossible to crack, but let's see when `update_store()` function is called. Here it is:
+From cryptographic perspective this looks impossible to crack. Let's see when `update_store()` function is called. 
 
 ```js
 // Create an item with a given name and price
@@ -140,10 +142,10 @@ function create_item_impl(name, price, cb) {
 }
 ```
 
-From reading the code it becomes obvious that `store.key` is defined when a new item is created and all the previous items are being updated in the process. This will become handful soon. 
+From reading the above function it becomes obvious that `store.key` is defined via `update_store()` and that happens when a new item is created. That will also update all the previous items in the process. This will come in handy very soon.
 
 ### What if we knew the secret key?
-If we knew the secret key from `store` object we could sign an object `{'id': 'flag.flag', 'price':'1'}` with that key and then by sending a `/checkout` request from [#Purchase-the-flag](#Purchase-the-flag) receive the flag. That is because of the following part of [server.js]:
+If we knew the secret key from `store` object we could sign an object `{'id': 'flag.flag', 'price':'1'}` with that key and then by sending a `/checkout` request from [#Purchase-the-flag](#Purchase-the-flag) section, receive the flag. That is because of the following part of the[server.js]:
 
 ```js
 // Get an item callback
@@ -160,16 +162,16 @@ stores[create_store('Flag','flag')].create_item('flag', 100000000, (id, req, res
 });
 ```
 
-The only requirement to access the flag is that 
+There are some security checks being done before accessing the flag but the crucial one is in `checkout(req, res)` function.
 
 ```js
 item = jwt.verify(req.body.token, store.key);
 ```
 
-from `checkout(req, res)`  function in [store.js] does not throw an error, i.e. the signature matches the key.
+Basically, to access the flag we must make verify function not to throw an error, i.e. the signature must match the key.
 
 ### Let's head back to template injection
-So, I mentioned earlier about this great bug in `Shopify` store that allowed to get an `RCE` and that does not work anymore. The reason why we cannot get the remote code execution using that trick is that any attempt to calling the `constructor` of any object will return `undefined`. Without a `constructor` it will be hard to iterate over contexts or to evaluate a string. But in the hint, it was said that we do not need to achieve `RCE`.
+So, I mentioned earlier about this great bug in `Shopify` store that allowed to get an `RCE` and that does not work anymore. The reason why we cannot get the remote code execution using that trick is that any attempt to calling the `constructor` of any object will return `undefined`. Without a `constructor` it is not trivial to iterate over contexts or to evaluate a string. But in the hint, it was said that we do not need to achieve `RCE`.
 
 To solve the challenge we would either want to read the `store.key` or override it with a value known to us. The syntax of [handlebars] is limited but it has [helper functions] that can do some crazy things. To take advantage of [#Store-object](#Store-object) we would ideally want to override the Object prototype and define our own [setter] and [getter] on `key` property so we can either read the key or replace it with controlled by us value. 
 
@@ -188,7 +190,7 @@ In plain `javascript` it could look like:
   )
 ```
 
-Since we cannot access any `constructor` property, getting reference to `Object` is a hard task. But there is another way to define [setter] or [getter]. There are deprecated features like [\_\_defineSetter\_\_] and [\_\_defineGetter\_\_] that still work. These can be called in [handlebars] for example in that payload: `{{this.__proto__.__defineGetter__}}`. I managed to use this and override the prototype with the following payload:
+Since we cannot access any `constructor` property, getting reference to `Object` is a challenging task. But there is another way to define [setter] or [getter]. There are deprecated features like [\_\_defineSetter\_\_] and [\_\_defineGetter\_\_] that still work. These can be called in [handlebars] for example in that payload: `{{this.__proto__.__defineGetter__}}`. I managed to use this and override the prototype with the following payload:
 
 ```js
 {{#with this.__proto__ as |o|}}
@@ -244,3 +246,4 @@ Congrats! Your flag is flag{npm_devs_are_pretty_bad_at_fixing_bugs}!
 [files]:<./buyify.tar.gz>
 [Server-side Template Injection]:<https://portswigger.net/blog/server-side-template-injection>
 [#with]:<https://handlebars-draft.knappi.org/guide/block-helpers.html#the-with-helper>
+[JSON Web Token]:<https://jwt.io/>
