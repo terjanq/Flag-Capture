@@ -43,7 +43,7 @@ In the following sections, I will present a solution split into pieces that are 
 
 
 ### Purchase the flag
-When visiting http://web.chal.csaw.io:1002/store/flag/ we could try to purchase the flag and we could notice the following request:
+When visiting http://web.chal.csaw.io:1002/store/flag/ we could try to purchase the flag with the following request beside:
 
 ```http
 POST /store/flag/checkout HTTP/1.1
