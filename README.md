@@ -29,6 +29,7 @@ The **c@fish** team merged with **Just Hit the Core** resulting with **justCatTh
 - [Grid It!](https://github.com/terjanq/Flag-Capture/tree/master/Practice/CTFLearn/GridIt#grid-it---write-up-by-terjanq) (CTFLearn Website `Web`)
 
 ### List of events I have participated in:
+This is the list of my very first ctfs I participated in. Stopped updating since they are just too many :) 
 - [CTFZone 2018 Quals](https://ctftime.org/event/632) (July 2018, *12th place*)
 - [Meepwn CTF Quals 2018](https://ctftime.org/event/625) (July 2018, *62nd place*)
 - [Google Capture The Flag 2018 (Quals)](https://ctftime.org/event/623) (June 2018, *85th place*)
