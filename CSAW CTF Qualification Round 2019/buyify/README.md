@@ -203,7 +203,7 @@ It is equivalent to the `Object.defineProperty` mentioned above. What it does is
 3) After that, accessing `[object].key` on newly created objects shall now return `[object Object]` as a string and it cannot be overriden using `[object].key = ...` because we overrode a setter function. 
 
 ### Win the lottery
-So now, the last piece required to solve the challenge is forging a valid `token` with `[object Object]` as a key.
+So now, the last missing piece is to forge a valid `token` with `[object Object]` as a key and `flag.flag` as an id.
 
 ```py
 # Forge flag token
