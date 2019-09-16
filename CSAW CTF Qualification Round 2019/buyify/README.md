@@ -199,7 +199,7 @@ Since we cannot access any `constructor` property, getting reference to `Object`
 
 It is equivalent to the `Object.defineProperty` mentioned above. What it does is:
 1) Setting a context to the prototype of `[object]` and aliasing it to `|o|` via [#with] helper.
-2) Definining [\_\_defineSetter\_\_] and [\_\_defineGetter\_\_] on `Object.prototype` with `key` as attribute and `this.toString()` as a callback. 
+2) Calling [\_\_defineSetter\_\_] and [\_\_defineGetter\_\_] on `Object.prototype` with `key` as attribute and `this.toString()` as a callback that override [setter] and [getter]. 
 3) After that, accessing `[object].key` on newly created objects shall now return `[object Object]` as a string and it cannot be overriden using `[object].key = ...` because we overrode a setter function. 
 
 ### Win the lottery
