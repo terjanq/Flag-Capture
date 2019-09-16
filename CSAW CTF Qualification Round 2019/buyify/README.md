@@ -1,21 +1,26 @@
-# Buyify (Web, 500, 15 solves)
-I decided to solve a few Web challenges from this year [CSAW 2019 (Quals)] and `Buyify` was one of them. The challenge was created by [@itszn13] and was solved by 15 teams. 
+# Buyify (Web, 500, 15 solves) by [@terjanq]
+This is a solution of [Buyify] web-task from [CSAW 2019 (Quals)] ctf. The challenge was created by [@itszn13], was worth 500 points and was solved by 15 teams. 
+
+*The challenge was really awesome and since all the [files] required to run the instance locally are provided it could be worth taking a look at it before reading through this write-up*
+
+
 
 ### Quick look
 We are provided with a simple [website] where we can:
-- visit `flag` store and by `flag` there
+- visit `flag` store and buy `flag` there
 - create our own store
-- update store description
-- create new items
+- update our store description
+- create items in our store
 
 After playing around with the webiste I noticed an interesting template in *update store description*
 ```html
 <p class="title">{{ store_name }} Store</p>
 <p class="subtitle">Welcome to a store for all things {{ store_name }}</p>
 ```
+Given that, I suspected the problem to be [Server-side Template Injection] related.
 
 ### Handlebars and 0day
-The first thing to try is always `{{7*7}}` to search for a possible template injection. When doing so we can notice the following error:
+The first thing to try with templates is always `{{7*7}}`. That can quickly confirm whether we hit mentioned template injection. When doing I could notice the following error:
 
 ```
 Error: Parse error on line 1:
@@ -27,7 +32,7 @@ Expecting 'ID', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', got 
 ....
 ```
 
-From the error, we can read that the library responsible for compiling templates is [handlebars]. Quick research led me to a great article [Handlebars template injection and RCE in a Shopify app]. The mentioned vulnerability was patched though and the challenge was clearly about *bypassing* the fix.
+From reading the error, we can see that the library responsible for compiling that template is [handlebars]. Quick research led me to a great article [Handlebars template injection and RCE in a Shopify app]. Mentioned in there vulnerability was unfortunately patched but all the details, starting with the challenge name, clearly point to *bypassing* the fix.
 
 However, we could see the hint 
 > *HINT: Templates are a prototype for fun and also, don't worry, you don't need rce*
@@ -164,9 +169,9 @@ item = jwt.verify(req.body.token, store.key);
 from `checkout(req, res)`  function in [store.js] does not throw an error, i.e. the signature matches the key.
 
 ### Let's head back to template injection
-So, I mentioned earlier about this great bug in `Shopify` store that allowed to do an `RCE` but that this does not work anymore. The reason why we cannot get the remote code execution anymore is that any attempt for calling the `constructor` of any object will return `undefined`. Without a `constructor` it will be hard to iterate over contexts or to evaluate a string. But in the hint, it was said that we do not need to achieve `RCE`.
+So, I mentioned earlier about this great bug in `Shopify` store that allowed to get an `RCE` but that this does not work anymore. The reason why we cannot get the remote code execution anymore is that any attempt for calling the `constructor` of any object will return `undefined`. Without a `constructor` it will be hard to iterate over contexts or to evaluate a string. But in the hint, it was said that we do not need to achieve `RCE`.
 
-To solve the challenge we would either want to read the `store.key` or override it with a known to us value. The syntax of [handlebars] is limited but it has [helper functions] that can do some crazy things. To take advantage of [#Store-object](#Store-object) we would ideally want to override the Object prototype and define our own [setter] and [getter] on `key` property so we can either read the key or replace it with controlled by us value. 
+To solve the challenge we would either want to read the `store.key` or override it with a value known to us. The syntax of [handlebars] is limited but it has [helper functions] that can do some crazy things. To take advantage of [#Store-object](#Store-object) we would ideally want to override the Object prototype and define our own [setter] and [getter] on `key` property so we can either read the key or replace it with controlled by us value. 
 
 In plain `javascript` it could look like:
 
@@ -230,3 +235,7 @@ Congrats! Your flag is flag{npm_devs_are_pretty_bad_at_fixing_bugs}!
 [\_\_defineSetter\_\_]:<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineSetter__>
 [\_\_defineGetter\_\_]:<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineGetter__>
 [solve.py]:<./solve.py>
+[Buyify]:<>
+[@terjanq]:<https://twitter.com/terjanq>
+[files]:<./buyify.tar.gz>
+[Server-side Template Injection]:<https://portswigger.net/blog/server-side-template-injection>
